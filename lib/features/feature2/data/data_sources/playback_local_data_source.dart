@@ -43,8 +43,8 @@ class PlaybackLocalDataSourceImpl implements PlaybackLocalDataSource {
 
     await for (var message in responsePort) {
       if (message == 'Initialized') {
-        print(
-            'Main thread received message: Initialized'); // Log received message
+        // print(
+        //     'Main thread received message: Initialized'); // Log received message
         responsePort.close();
         _isolateReady.complete();
         break;
@@ -60,16 +60,12 @@ class PlaybackLocalDataSourceImpl implements PlaybackLocalDataSource {
 
     if (await file.exists()) {
       final contents = await file.readAsString();
-      print('Loaded contents: $contents'); // Log the contents of the file
       final data = json.decode(contents);
 
       // Assuming you have a method to set the audio player state
       if (data is Map<String, dynamic>) {
         final trackId = data['currentTrackId'];
         final position = data['currentPosition'];
-
-        print(
-            'Loaded state: trackId = $trackId, position = $position'); // Log loaded state
         return PlaybackStateModel(
           currentTrackId: trackId,
           currentPosition: position,
@@ -78,8 +74,6 @@ class PlaybackLocalDataSourceImpl implements PlaybackLocalDataSource {
         return null;
       }
     } else {
-      print(
-          'Playback state file does not exist.'); // Log if the file does not exist
       return null;
     }
   }
@@ -89,24 +83,6 @@ class PlaybackLocalDataSourceImpl implements PlaybackLocalDataSource {
     required String currentTrackId,
     required int currentPosition,
   }) async {
-    // await _initIsolate();
-    // final dir = await getApplicationDocumentsDirectory();
-    // final isolateToken = ServicesBinding.rootIsolateToken!;
-    // BackgroundIsolateBinaryMessenger.ensureInitialized(isolateToken);
-    // return await Isolate.run<void>(() async {
-    //   try {
-    //     final file = File('${dir.path}/playback_state.json');
-    //     await file.writeAsString(json.encode({
-    //       'currentTrackId': currentTrackId,
-    //       'currentPosition': currentPosition,
-    //     }));
-    //     print("+++ WRITE $currentPosition");
-    //   } catch (e) {
-    //     print("Error getting application documents directory: $e");
-    //   }
-    // });
-
-    //-
     await _isolateReady.future; // Wait for isolate to be ready
     if (_sendPort != null) {
       final completer = Completer<void>();
@@ -126,13 +102,6 @@ class PlaybackLocalDataSourceImpl implements PlaybackLocalDataSource {
       });
 
       await completer.future;
-
-      // Log the saved state
-      final dir = await getApplicationDocumentsDirectory();
-      final filePath = '${dir.path}/playback_state.json';
-      final file = File(filePath);
-      final contents = await file.readAsString();
-      print('Saved contents: $contents'); // Log the contents after saving
     }
   }
 

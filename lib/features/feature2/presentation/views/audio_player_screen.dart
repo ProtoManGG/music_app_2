@@ -19,26 +19,6 @@ class AudioPlayerScreen extends StatefulWidget {
 class _AudioPlayerScreenState extends State<AudioPlayerScreen>
     with WidgetsBindingObserver {
   late AudioPlayer _audioPlayer;
-  // Isolate? _isolate;
-  // SendPort? _sendPort;
-  // String? _filePath;
-  // final Completer<void> _isolateReady = Completer<void>();
-
-  // final _playlist = ConcatenatingAudioSource(
-  //   children: [
-  //     AudioSource.uri(
-  //       Uri.parse(url),
-  //       tag: MediaItem(
-  //         id: '0',
-  //         title: 'NASA\'s view on Space',
-  //         artist: 'NASA COM',
-  //         artUri: Uri.parse(
-  //           'https://images.unsplash.com/photo-1723375386110-729a0612ab99',
-  //         ),
-  //       ),
-  //     ),
-  //   ],
-  // );
 
   Stream<PositionData> get _positionDataStream => Rx.combineLatest3(
         _audioPlayer.positionStream,
@@ -58,34 +38,10 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _audioPlayer = AudioPlayer();
-    // context
-    //     .read<PlaybackPositionBloc>()
-    //     .add(const AudioPlaybackEvent.loadFromDb());
-
     context
         .read<PlaybackPositionBloc>()
         .add(const AudioPlaybackEvent.initIsolate());
-
-    // _initIsolate().then((_) {
-    //   _loadPlaybackState(); // Load the saved state
-    //   // _init();
-    // });
-
-    // Listen to position stream and save playback state every 5 seconds
-    // _audioPlayer.positionStream.listen((position) {
-    // print('Current position: $position'); // Log the current position
-    // if (position.inSeconds % 5 == 0) {
-    //   _savePlaybackState();
-    // }
-    // });
-
-    // _audioPlayer.play(); // Start playback
   }
-
-  // Future<void> _init() async {
-  //   await _audioPlayer.setLoopMode(LoopMode.all);
-  //   await _audioPlayer.setAudioSource(_playlist);
-  // }
 
   @override
   void dispose() {
@@ -99,23 +55,21 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.paused) {
-      print("+++ for PAUSE");
-      _savePlaybackState(); // Save state when app goes to background
-    } else if (state == AppLifecycleState.inactive) {
-      print("+++ for INACTIVE");
-      _savePlaybackState(); // Save state when app is terminated
-    } else if (state == AppLifecycleState.detached) {
-      print("+++ for KILL");
-      _savePlaybackState(); // Save state when app is terminated
+    switch (state) {
+      case AppLifecycleState.paused:
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.detached:
+        context.read<PlaybackPositionBloc>().add(
+              AudioPlaybackEvent.saveToDb(
+                currentTrackId: '0',
+                currentPosition: _audioPlayer.position.inMilliseconds,
+              ),
+            );
+        break;
+      default:
+        break;
     }
   }
-
-  void _savePlaybackState() =>
-      context.read<PlaybackPositionBloc>().add(AudioPlaybackEvent.saveToDb(
-            currentTrackId: '0',
-            currentPosition: _audioPlayer.position.inMilliseconds,
-          ));
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +104,6 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
               const url =
                   'https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8';
 
-              print(loaded.playbackStateEntity);
               // Load the audio source with the MediaItem
               await _audioPlayer.setAudioSource(
                 AudioSource.uri(
