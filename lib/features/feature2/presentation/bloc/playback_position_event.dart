@@ -1,7 +1,15 @@
 part of 'playback_position_bloc.dart';
 
 @freezed
-class PlaybackPositionEvent with _$PlaybackPositionEvent {
-  const factory PlaybackPositionEvent.load() = _Load;
-  const factory PlaybackPositionEvent.save({required PlaybackState pbState}) = _Save;
+class AudioPlaybackEvent with _$AudioPlaybackEvent {
+  const factory AudioPlaybackEvent.initIsolate() = _InitIsolate;
+  const factory AudioPlaybackEvent.disposeIsolate() = _DisposeIsolate;
+  const factory AudioPlaybackEvent.loadFromDb() = _LoadFromDb;
+  const factory AudioPlaybackEvent.saveToDb({
+    required String currentTrackId,
+    required int currentPosition,
+  }) = _SaveToDb;
+  const factory AudioPlaybackEvent.pause() = Pause;
+  const factory AudioPlaybackEvent.play({required String url}) = Play;
+  const factory AudioPlaybackEvent.seek({required Duration duration}) = Seek;
 }

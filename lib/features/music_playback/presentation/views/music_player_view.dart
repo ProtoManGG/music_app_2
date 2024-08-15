@@ -6,9 +6,9 @@ import 'package:music_app_2/features/music_playback/data/datasources/audio_remot
 import 'package:music_app_2/features/music_playback/data/repositories/audio_track_repository_impl.dart';
 import 'package:music_app_2/features/music_playback/domain/repositories/audio_repository.dart';
 import 'package:music_app_2/features/music_playback/domain/usecases/get_audio_track.dart';
-import 'package:music_app_2/features/music_playback/domain/usecases/pause_audio.dart';
-import 'package:music_app_2/features/music_playback/domain/usecases/play_audio.dart';
-import 'package:music_app_2/features/music_playback/domain/usecases/seek_audio.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/pause_audio.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/play_audio.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/seek_audio.dart';
 
 class MusicPlayerView extends StatelessWidget {
   const MusicPlayerView({super.key});

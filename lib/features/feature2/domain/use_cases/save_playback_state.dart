@@ -7,7 +7,7 @@ class SavePlaybackState {
 
   SavePlaybackState(this.repository);
 
-  Future<void> call(PlaybackState playbackState) async {
+  Future<void> call(PlaybackStateEntity playbackState) async {
     // await repository.savePlaybackState(playbackState);
   }
 }

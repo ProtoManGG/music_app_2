@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:music_app_2/core/error/failures.dart';
 import 'package:music_app_2/core/usecases/usecase.dart';
-import '../repositories/audio_repository.dart';
+import '../../../music_playback/domain/repositories/audio_repository.dart';
 
 class PauseAudio implements UseCase<None, NoParams> {
   final AudioRepository repository;

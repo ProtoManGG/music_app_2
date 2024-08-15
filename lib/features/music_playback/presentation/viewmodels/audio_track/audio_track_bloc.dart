@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:music_app_2/core/usecases/usecase.dart';
 import 'package:music_app_2/features/music_playback/domain/usecases/get_audio_track.dart';
-import 'package:music_app_2/features/music_playback/domain/usecases/pause_audio.dart';
-import 'package:music_app_2/features/music_playback/domain/usecases/play_audio.dart';
-import 'package:music_app_2/features/music_playback/domain/usecases/seek_audio.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/pause_audio.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/play_audio.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/seek_audio.dart';
 
 part 'audio_track_bloc.freezed.dart';
 part 'audio_track_event.dart';

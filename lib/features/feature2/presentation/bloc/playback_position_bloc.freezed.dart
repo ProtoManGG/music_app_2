@@ -15,59 +15,89 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$PlaybackPositionEvent {
+mixin _$AudioPlaybackEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
-    required TResult Function(PlaybackState pbState) save,
+    required TResult Function() initIsolate,
+    required TResult Function() disposeIsolate,
+    required TResult Function() loadFromDb,
+    required TResult Function(String currentTrackId, int currentPosition)
+        saveToDb,
+    required TResult Function() pause,
+    required TResult Function(String url) play,
+    required TResult Function(Duration duration) seek,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? load,
-    TResult? Function(PlaybackState pbState)? save,
+    TResult? Function()? initIsolate,
+    TResult? Function()? disposeIsolate,
+    TResult? Function()? loadFromDb,
+    TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult? Function()? pause,
+    TResult? Function(String url)? play,
+    TResult? Function(Duration duration)? seek,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
-    TResult Function(PlaybackState pbState)? save,
+    TResult Function()? initIsolate,
+    TResult Function()? disposeIsolate,
+    TResult Function()? loadFromDb,
+    TResult Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult Function()? pause,
+    TResult Function(String url)? play,
+    TResult Function(Duration duration)? seek,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Load value) load,
-    required TResult Function(_Save value) save,
+    required TResult Function(_InitIsolate value) initIsolate,
+    required TResult Function(_DisposeIsolate value) disposeIsolate,
+    required TResult Function(_LoadFromDb value) loadFromDb,
+    required TResult Function(_SaveToDb value) saveToDb,
+    required TResult Function(Pause value) pause,
+    required TResult Function(Play value) play,
+    required TResult Function(Seek value) seek,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Load value)? load,
-    TResult? Function(_Save value)? save,
+    TResult? Function(_InitIsolate value)? initIsolate,
+    TResult? Function(_DisposeIsolate value)? disposeIsolate,
+    TResult? Function(_LoadFromDb value)? loadFromDb,
+    TResult? Function(_SaveToDb value)? saveToDb,
+    TResult? Function(Pause value)? pause,
+    TResult? Function(Play value)? play,
+    TResult? Function(Seek value)? seek,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Load value)? load,
-    TResult Function(_Save value)? save,
+    TResult Function(_InitIsolate value)? initIsolate,
+    TResult Function(_DisposeIsolate value)? disposeIsolate,
+    TResult Function(_LoadFromDb value)? loadFromDb,
+    TResult Function(_SaveToDb value)? saveToDb,
+    TResult Function(Pause value)? pause,
+    TResult Function(Play value)? play,
+    TResult Function(Seek value)? seek,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PlaybackPositionEventCopyWith<$Res> {
-  factory $PlaybackPositionEventCopyWith(PlaybackPositionEvent value,
-          $Res Function(PlaybackPositionEvent) then) =
-      _$PlaybackPositionEventCopyWithImpl<$Res, PlaybackPositionEvent>;
+abstract class $AudioPlaybackEventCopyWith<$Res> {
+  factory $AudioPlaybackEventCopyWith(
+          AudioPlaybackEvent value, $Res Function(AudioPlaybackEvent) then) =
+      _$AudioPlaybackEventCopyWithImpl<$Res, AudioPlaybackEvent>;
 }
 
 /// @nodoc
-class _$PlaybackPositionEventCopyWithImpl<$Res,
-        $Val extends PlaybackPositionEvent>
-    implements $PlaybackPositionEventCopyWith<$Res> {
-  _$PlaybackPositionEventCopyWithImpl(this._value, this._then);
+class _$AudioPlaybackEventCopyWithImpl<$Res, $Val extends AudioPlaybackEvent>
+    implements $AudioPlaybackEventCopyWith<$Res> {
+  _$AudioPlaybackEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -76,34 +106,35 @@ class _$PlaybackPositionEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$LoadImplCopyWith<$Res> {
-  factory _$$LoadImplCopyWith(
-          _$LoadImpl value, $Res Function(_$LoadImpl) then) =
-      __$$LoadImplCopyWithImpl<$Res>;
+abstract class _$$InitIsolateImplCopyWith<$Res> {
+  factory _$$InitIsolateImplCopyWith(
+          _$InitIsolateImpl value, $Res Function(_$InitIsolateImpl) then) =
+      __$$InitIsolateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadImplCopyWithImpl<$Res>
-    extends _$PlaybackPositionEventCopyWithImpl<$Res, _$LoadImpl>
-    implements _$$LoadImplCopyWith<$Res> {
-  __$$LoadImplCopyWithImpl(_$LoadImpl _value, $Res Function(_$LoadImpl) _then)
+class __$$InitIsolateImplCopyWithImpl<$Res>
+    extends _$AudioPlaybackEventCopyWithImpl<$Res, _$InitIsolateImpl>
+    implements _$$InitIsolateImplCopyWith<$Res> {
+  __$$InitIsolateImplCopyWithImpl(
+      _$InitIsolateImpl _value, $Res Function(_$InitIsolateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadImpl implements _Load {
-  const _$LoadImpl();
+class _$InitIsolateImpl implements _InitIsolate {
+  const _$InitIsolateImpl();
 
   @override
   String toString() {
-    return 'PlaybackPositionEvent.load()';
+    return 'AudioPlaybackEvent.initIsolate()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadImpl);
+        (other.runtimeType == runtimeType && other is _$InitIsolateImpl);
   }
 
   @override
@@ -112,30 +143,46 @@ class _$LoadImpl implements _Load {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
-    required TResult Function(PlaybackState pbState) save,
+    required TResult Function() initIsolate,
+    required TResult Function() disposeIsolate,
+    required TResult Function() loadFromDb,
+    required TResult Function(String currentTrackId, int currentPosition)
+        saveToDb,
+    required TResult Function() pause,
+    required TResult Function(String url) play,
+    required TResult Function(Duration duration) seek,
   }) {
-    return load();
+    return initIsolate();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? load,
-    TResult? Function(PlaybackState pbState)? save,
+    TResult? Function()? initIsolate,
+    TResult? Function()? disposeIsolate,
+    TResult? Function()? loadFromDb,
+    TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult? Function()? pause,
+    TResult? Function(String url)? play,
+    TResult? Function(Duration duration)? seek,
   }) {
-    return load?.call();
+    return initIsolate?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
-    TResult Function(PlaybackState pbState)? save,
+    TResult Function()? initIsolate,
+    TResult Function()? disposeIsolate,
+    TResult Function()? loadFromDb,
+    TResult Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult Function()? pause,
+    TResult Function(String url)? play,
+    TResult Function(Duration duration)? seek,
     required TResult orElse(),
   }) {
-    if (load != null) {
-      return load();
+    if (initIsolate != null) {
+      return initIsolate();
     }
     return orElse();
   }
@@ -143,126 +190,435 @@ class _$LoadImpl implements _Load {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Load value) load,
-    required TResult Function(_Save value) save,
+    required TResult Function(_InitIsolate value) initIsolate,
+    required TResult Function(_DisposeIsolate value) disposeIsolate,
+    required TResult Function(_LoadFromDb value) loadFromDb,
+    required TResult Function(_SaveToDb value) saveToDb,
+    required TResult Function(Pause value) pause,
+    required TResult Function(Play value) play,
+    required TResult Function(Seek value) seek,
   }) {
-    return load(this);
+    return initIsolate(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Load value)? load,
-    TResult? Function(_Save value)? save,
+    TResult? Function(_InitIsolate value)? initIsolate,
+    TResult? Function(_DisposeIsolate value)? disposeIsolate,
+    TResult? Function(_LoadFromDb value)? loadFromDb,
+    TResult? Function(_SaveToDb value)? saveToDb,
+    TResult? Function(Pause value)? pause,
+    TResult? Function(Play value)? play,
+    TResult? Function(Seek value)? seek,
   }) {
-    return load?.call(this);
+    return initIsolate?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Load value)? load,
-    TResult Function(_Save value)? save,
+    TResult Function(_InitIsolate value)? initIsolate,
+    TResult Function(_DisposeIsolate value)? disposeIsolate,
+    TResult Function(_LoadFromDb value)? loadFromDb,
+    TResult Function(_SaveToDb value)? saveToDb,
+    TResult Function(Pause value)? pause,
+    TResult Function(Play value)? play,
+    TResult Function(Seek value)? seek,
     required TResult orElse(),
   }) {
-    if (load != null) {
-      return load(this);
+    if (initIsolate != null) {
+      return initIsolate(this);
     }
     return orElse();
   }
 }
 
-abstract class _Load implements PlaybackPositionEvent {
-  const factory _Load() = _$LoadImpl;
+abstract class _InitIsolate implements AudioPlaybackEvent {
+  const factory _InitIsolate() = _$InitIsolateImpl;
 }
 
 /// @nodoc
-abstract class _$$SaveImplCopyWith<$Res> {
-  factory _$$SaveImplCopyWith(
-          _$SaveImpl value, $Res Function(_$SaveImpl) then) =
-      __$$SaveImplCopyWithImpl<$Res>;
+abstract class _$$DisposeIsolateImplCopyWith<$Res> {
+  factory _$$DisposeIsolateImplCopyWith(_$DisposeIsolateImpl value,
+          $Res Function(_$DisposeIsolateImpl) then) =
+      __$$DisposeIsolateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DisposeIsolateImplCopyWithImpl<$Res>
+    extends _$AudioPlaybackEventCopyWithImpl<$Res, _$DisposeIsolateImpl>
+    implements _$$DisposeIsolateImplCopyWith<$Res> {
+  __$$DisposeIsolateImplCopyWithImpl(
+      _$DisposeIsolateImpl _value, $Res Function(_$DisposeIsolateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DisposeIsolateImpl implements _DisposeIsolate {
+  const _$DisposeIsolateImpl();
+
+  @override
+  String toString() {
+    return 'AudioPlaybackEvent.disposeIsolate()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DisposeIsolateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initIsolate,
+    required TResult Function() disposeIsolate,
+    required TResult Function() loadFromDb,
+    required TResult Function(String currentTrackId, int currentPosition)
+        saveToDb,
+    required TResult Function() pause,
+    required TResult Function(String url) play,
+    required TResult Function(Duration duration) seek,
+  }) {
+    return disposeIsolate();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initIsolate,
+    TResult? Function()? disposeIsolate,
+    TResult? Function()? loadFromDb,
+    TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult? Function()? pause,
+    TResult? Function(String url)? play,
+    TResult? Function(Duration duration)? seek,
+  }) {
+    return disposeIsolate?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initIsolate,
+    TResult Function()? disposeIsolate,
+    TResult Function()? loadFromDb,
+    TResult Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult Function()? pause,
+    TResult Function(String url)? play,
+    TResult Function(Duration duration)? seek,
+    required TResult orElse(),
+  }) {
+    if (disposeIsolate != null) {
+      return disposeIsolate();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitIsolate value) initIsolate,
+    required TResult Function(_DisposeIsolate value) disposeIsolate,
+    required TResult Function(_LoadFromDb value) loadFromDb,
+    required TResult Function(_SaveToDb value) saveToDb,
+    required TResult Function(Pause value) pause,
+    required TResult Function(Play value) play,
+    required TResult Function(Seek value) seek,
+  }) {
+    return disposeIsolate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitIsolate value)? initIsolate,
+    TResult? Function(_DisposeIsolate value)? disposeIsolate,
+    TResult? Function(_LoadFromDb value)? loadFromDb,
+    TResult? Function(_SaveToDb value)? saveToDb,
+    TResult? Function(Pause value)? pause,
+    TResult? Function(Play value)? play,
+    TResult? Function(Seek value)? seek,
+  }) {
+    return disposeIsolate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitIsolate value)? initIsolate,
+    TResult Function(_DisposeIsolate value)? disposeIsolate,
+    TResult Function(_LoadFromDb value)? loadFromDb,
+    TResult Function(_SaveToDb value)? saveToDb,
+    TResult Function(Pause value)? pause,
+    TResult Function(Play value)? play,
+    TResult Function(Seek value)? seek,
+    required TResult orElse(),
+  }) {
+    if (disposeIsolate != null) {
+      return disposeIsolate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DisposeIsolate implements AudioPlaybackEvent {
+  const factory _DisposeIsolate() = _$DisposeIsolateImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadFromDbImplCopyWith<$Res> {
+  factory _$$LoadFromDbImplCopyWith(
+          _$LoadFromDbImpl value, $Res Function(_$LoadFromDbImpl) then) =
+      __$$LoadFromDbImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadFromDbImplCopyWithImpl<$Res>
+    extends _$AudioPlaybackEventCopyWithImpl<$Res, _$LoadFromDbImpl>
+    implements _$$LoadFromDbImplCopyWith<$Res> {
+  __$$LoadFromDbImplCopyWithImpl(
+      _$LoadFromDbImpl _value, $Res Function(_$LoadFromDbImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadFromDbImpl implements _LoadFromDb {
+  const _$LoadFromDbImpl();
+
+  @override
+  String toString() {
+    return 'AudioPlaybackEvent.loadFromDb()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadFromDbImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initIsolate,
+    required TResult Function() disposeIsolate,
+    required TResult Function() loadFromDb,
+    required TResult Function(String currentTrackId, int currentPosition)
+        saveToDb,
+    required TResult Function() pause,
+    required TResult Function(String url) play,
+    required TResult Function(Duration duration) seek,
+  }) {
+    return loadFromDb();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initIsolate,
+    TResult? Function()? disposeIsolate,
+    TResult? Function()? loadFromDb,
+    TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult? Function()? pause,
+    TResult? Function(String url)? play,
+    TResult? Function(Duration duration)? seek,
+  }) {
+    return loadFromDb?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initIsolate,
+    TResult Function()? disposeIsolate,
+    TResult Function()? loadFromDb,
+    TResult Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult Function()? pause,
+    TResult Function(String url)? play,
+    TResult Function(Duration duration)? seek,
+    required TResult orElse(),
+  }) {
+    if (loadFromDb != null) {
+      return loadFromDb();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitIsolate value) initIsolate,
+    required TResult Function(_DisposeIsolate value) disposeIsolate,
+    required TResult Function(_LoadFromDb value) loadFromDb,
+    required TResult Function(_SaveToDb value) saveToDb,
+    required TResult Function(Pause value) pause,
+    required TResult Function(Play value) play,
+    required TResult Function(Seek value) seek,
+  }) {
+    return loadFromDb(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitIsolate value)? initIsolate,
+    TResult? Function(_DisposeIsolate value)? disposeIsolate,
+    TResult? Function(_LoadFromDb value)? loadFromDb,
+    TResult? Function(_SaveToDb value)? saveToDb,
+    TResult? Function(Pause value)? pause,
+    TResult? Function(Play value)? play,
+    TResult? Function(Seek value)? seek,
+  }) {
+    return loadFromDb?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitIsolate value)? initIsolate,
+    TResult Function(_DisposeIsolate value)? disposeIsolate,
+    TResult Function(_LoadFromDb value)? loadFromDb,
+    TResult Function(_SaveToDb value)? saveToDb,
+    TResult Function(Pause value)? pause,
+    TResult Function(Play value)? play,
+    TResult Function(Seek value)? seek,
+    required TResult orElse(),
+  }) {
+    if (loadFromDb != null) {
+      return loadFromDb(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadFromDb implements AudioPlaybackEvent {
+  const factory _LoadFromDb() = _$LoadFromDbImpl;
+}
+
+/// @nodoc
+abstract class _$$SaveToDbImplCopyWith<$Res> {
+  factory _$$SaveToDbImplCopyWith(
+          _$SaveToDbImpl value, $Res Function(_$SaveToDbImpl) then) =
+      __$$SaveToDbImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PlaybackState pbState});
+  $Res call({String currentTrackId, int currentPosition});
 }
 
 /// @nodoc
-class __$$SaveImplCopyWithImpl<$Res>
-    extends _$PlaybackPositionEventCopyWithImpl<$Res, _$SaveImpl>
-    implements _$$SaveImplCopyWith<$Res> {
-  __$$SaveImplCopyWithImpl(_$SaveImpl _value, $Res Function(_$SaveImpl) _then)
+class __$$SaveToDbImplCopyWithImpl<$Res>
+    extends _$AudioPlaybackEventCopyWithImpl<$Res, _$SaveToDbImpl>
+    implements _$$SaveToDbImplCopyWith<$Res> {
+  __$$SaveToDbImplCopyWithImpl(
+      _$SaveToDbImpl _value, $Res Function(_$SaveToDbImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pbState = null,
+    Object? currentTrackId = null,
+    Object? currentPosition = null,
   }) {
-    return _then(_$SaveImpl(
-      pbState: null == pbState
-          ? _value.pbState
-          : pbState // ignore: cast_nullable_to_non_nullable
-              as PlaybackState,
+    return _then(_$SaveToDbImpl(
+      currentTrackId: null == currentTrackId
+          ? _value.currentTrackId
+          : currentTrackId // ignore: cast_nullable_to_non_nullable
+              as String,
+      currentPosition: null == currentPosition
+          ? _value.currentPosition
+          : currentPosition // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SaveImpl implements _Save {
-  const _$SaveImpl({required this.pbState});
+class _$SaveToDbImpl implements _SaveToDb {
+  const _$SaveToDbImpl(
+      {required this.currentTrackId, required this.currentPosition});
 
   @override
-  final PlaybackState pbState;
+  final String currentTrackId;
+  @override
+  final int currentPosition;
 
   @override
   String toString() {
-    return 'PlaybackPositionEvent.save(pbState: $pbState)';
+    return 'AudioPlaybackEvent.saveToDb(currentTrackId: $currentTrackId, currentPosition: $currentPosition)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SaveImpl &&
-            (identical(other.pbState, pbState) || other.pbState == pbState));
+            other is _$SaveToDbImpl &&
+            (identical(other.currentTrackId, currentTrackId) ||
+                other.currentTrackId == currentTrackId) &&
+            (identical(other.currentPosition, currentPosition) ||
+                other.currentPosition == currentPosition));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pbState);
+  int get hashCode => Object.hash(runtimeType, currentTrackId, currentPosition);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SaveImplCopyWith<_$SaveImpl> get copyWith =>
-      __$$SaveImplCopyWithImpl<_$SaveImpl>(this, _$identity);
+  _$$SaveToDbImplCopyWith<_$SaveToDbImpl> get copyWith =>
+      __$$SaveToDbImplCopyWithImpl<_$SaveToDbImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
-    required TResult Function(PlaybackState pbState) save,
+    required TResult Function() initIsolate,
+    required TResult Function() disposeIsolate,
+    required TResult Function() loadFromDb,
+    required TResult Function(String currentTrackId, int currentPosition)
+        saveToDb,
+    required TResult Function() pause,
+    required TResult Function(String url) play,
+    required TResult Function(Duration duration) seek,
   }) {
-    return save(pbState);
+    return saveToDb(currentTrackId, currentPosition);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? load,
-    TResult? Function(PlaybackState pbState)? save,
+    TResult? Function()? initIsolate,
+    TResult? Function()? disposeIsolate,
+    TResult? Function()? loadFromDb,
+    TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult? Function()? pause,
+    TResult? Function(String url)? play,
+    TResult? Function(Duration duration)? seek,
   }) {
-    return save?.call(pbState);
+    return saveToDb?.call(currentTrackId, currentPosition);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
-    TResult Function(PlaybackState pbState)? save,
+    TResult Function()? initIsolate,
+    TResult Function()? disposeIsolate,
+    TResult Function()? loadFromDb,
+    TResult Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult Function()? pause,
+    TResult Function(String url)? play,
+    TResult Function(Duration duration)? seek,
     required TResult orElse(),
   }) {
-    if (save != null) {
-      return save(pbState);
+    if (saveToDb != null) {
+      return saveToDb(currentTrackId, currentPosition);
     }
     return orElse();
   }
@@ -270,41 +626,519 @@ class _$SaveImpl implements _Save {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Load value) load,
-    required TResult Function(_Save value) save,
+    required TResult Function(_InitIsolate value) initIsolate,
+    required TResult Function(_DisposeIsolate value) disposeIsolate,
+    required TResult Function(_LoadFromDb value) loadFromDb,
+    required TResult Function(_SaveToDb value) saveToDb,
+    required TResult Function(Pause value) pause,
+    required TResult Function(Play value) play,
+    required TResult Function(Seek value) seek,
   }) {
-    return save(this);
+    return saveToDb(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Load value)? load,
-    TResult? Function(_Save value)? save,
+    TResult? Function(_InitIsolate value)? initIsolate,
+    TResult? Function(_DisposeIsolate value)? disposeIsolate,
+    TResult? Function(_LoadFromDb value)? loadFromDb,
+    TResult? Function(_SaveToDb value)? saveToDb,
+    TResult? Function(Pause value)? pause,
+    TResult? Function(Play value)? play,
+    TResult? Function(Seek value)? seek,
   }) {
-    return save?.call(this);
+    return saveToDb?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Load value)? load,
-    TResult Function(_Save value)? save,
+    TResult Function(_InitIsolate value)? initIsolate,
+    TResult Function(_DisposeIsolate value)? disposeIsolate,
+    TResult Function(_LoadFromDb value)? loadFromDb,
+    TResult Function(_SaveToDb value)? saveToDb,
+    TResult Function(Pause value)? pause,
+    TResult Function(Play value)? play,
+    TResult Function(Seek value)? seek,
     required TResult orElse(),
   }) {
-    if (save != null) {
-      return save(this);
+    if (saveToDb != null) {
+      return saveToDb(this);
     }
     return orElse();
   }
 }
 
-abstract class _Save implements PlaybackPositionEvent {
-  const factory _Save({required final PlaybackState pbState}) = _$SaveImpl;
+abstract class _SaveToDb implements AudioPlaybackEvent {
+  const factory _SaveToDb(
+      {required final String currentTrackId,
+      required final int currentPosition}) = _$SaveToDbImpl;
 
-  PlaybackState get pbState;
+  String get currentTrackId;
+  int get currentPosition;
   @JsonKey(ignore: true)
-  _$$SaveImplCopyWith<_$SaveImpl> get copyWith =>
+  _$$SaveToDbImplCopyWith<_$SaveToDbImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PauseImplCopyWith<$Res> {
+  factory _$$PauseImplCopyWith(
+          _$PauseImpl value, $Res Function(_$PauseImpl) then) =
+      __$$PauseImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PauseImplCopyWithImpl<$Res>
+    extends _$AudioPlaybackEventCopyWithImpl<$Res, _$PauseImpl>
+    implements _$$PauseImplCopyWith<$Res> {
+  __$$PauseImplCopyWithImpl(
+      _$PauseImpl _value, $Res Function(_$PauseImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PauseImpl implements Pause {
+  const _$PauseImpl();
+
+  @override
+  String toString() {
+    return 'AudioPlaybackEvent.pause()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PauseImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initIsolate,
+    required TResult Function() disposeIsolate,
+    required TResult Function() loadFromDb,
+    required TResult Function(String currentTrackId, int currentPosition)
+        saveToDb,
+    required TResult Function() pause,
+    required TResult Function(String url) play,
+    required TResult Function(Duration duration) seek,
+  }) {
+    return pause();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initIsolate,
+    TResult? Function()? disposeIsolate,
+    TResult? Function()? loadFromDb,
+    TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult? Function()? pause,
+    TResult? Function(String url)? play,
+    TResult? Function(Duration duration)? seek,
+  }) {
+    return pause?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initIsolate,
+    TResult Function()? disposeIsolate,
+    TResult Function()? loadFromDb,
+    TResult Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult Function()? pause,
+    TResult Function(String url)? play,
+    TResult Function(Duration duration)? seek,
+    required TResult orElse(),
+  }) {
+    if (pause != null) {
+      return pause();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitIsolate value) initIsolate,
+    required TResult Function(_DisposeIsolate value) disposeIsolate,
+    required TResult Function(_LoadFromDb value) loadFromDb,
+    required TResult Function(_SaveToDb value) saveToDb,
+    required TResult Function(Pause value) pause,
+    required TResult Function(Play value) play,
+    required TResult Function(Seek value) seek,
+  }) {
+    return pause(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitIsolate value)? initIsolate,
+    TResult? Function(_DisposeIsolate value)? disposeIsolate,
+    TResult? Function(_LoadFromDb value)? loadFromDb,
+    TResult? Function(_SaveToDb value)? saveToDb,
+    TResult? Function(Pause value)? pause,
+    TResult? Function(Play value)? play,
+    TResult? Function(Seek value)? seek,
+  }) {
+    return pause?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitIsolate value)? initIsolate,
+    TResult Function(_DisposeIsolate value)? disposeIsolate,
+    TResult Function(_LoadFromDb value)? loadFromDb,
+    TResult Function(_SaveToDb value)? saveToDb,
+    TResult Function(Pause value)? pause,
+    TResult Function(Play value)? play,
+    TResult Function(Seek value)? seek,
+    required TResult orElse(),
+  }) {
+    if (pause != null) {
+      return pause(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Pause implements AudioPlaybackEvent {
+  const factory Pause() = _$PauseImpl;
+}
+
+/// @nodoc
+abstract class _$$PlayImplCopyWith<$Res> {
+  factory _$$PlayImplCopyWith(
+          _$PlayImpl value, $Res Function(_$PlayImpl) then) =
+      __$$PlayImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String url});
+}
+
+/// @nodoc
+class __$$PlayImplCopyWithImpl<$Res>
+    extends _$AudioPlaybackEventCopyWithImpl<$Res, _$PlayImpl>
+    implements _$$PlayImplCopyWith<$Res> {
+  __$$PlayImplCopyWithImpl(_$PlayImpl _value, $Res Function(_$PlayImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? url = null,
+  }) {
+    return _then(_$PlayImpl(
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PlayImpl implements Play {
+  const _$PlayImpl({required this.url});
+
+  @override
+  final String url;
+
+  @override
+  String toString() {
+    return 'AudioPlaybackEvent.play(url: $url)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PlayImpl &&
+            (identical(other.url, url) || other.url == url));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, url);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PlayImplCopyWith<_$PlayImpl> get copyWith =>
+      __$$PlayImplCopyWithImpl<_$PlayImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initIsolate,
+    required TResult Function() disposeIsolate,
+    required TResult Function() loadFromDb,
+    required TResult Function(String currentTrackId, int currentPosition)
+        saveToDb,
+    required TResult Function() pause,
+    required TResult Function(String url) play,
+    required TResult Function(Duration duration) seek,
+  }) {
+    return play(url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initIsolate,
+    TResult? Function()? disposeIsolate,
+    TResult? Function()? loadFromDb,
+    TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult? Function()? pause,
+    TResult? Function(String url)? play,
+    TResult? Function(Duration duration)? seek,
+  }) {
+    return play?.call(url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initIsolate,
+    TResult Function()? disposeIsolate,
+    TResult Function()? loadFromDb,
+    TResult Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult Function()? pause,
+    TResult Function(String url)? play,
+    TResult Function(Duration duration)? seek,
+    required TResult orElse(),
+  }) {
+    if (play != null) {
+      return play(url);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitIsolate value) initIsolate,
+    required TResult Function(_DisposeIsolate value) disposeIsolate,
+    required TResult Function(_LoadFromDb value) loadFromDb,
+    required TResult Function(_SaveToDb value) saveToDb,
+    required TResult Function(Pause value) pause,
+    required TResult Function(Play value) play,
+    required TResult Function(Seek value) seek,
+  }) {
+    return play(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitIsolate value)? initIsolate,
+    TResult? Function(_DisposeIsolate value)? disposeIsolate,
+    TResult? Function(_LoadFromDb value)? loadFromDb,
+    TResult? Function(_SaveToDb value)? saveToDb,
+    TResult? Function(Pause value)? pause,
+    TResult? Function(Play value)? play,
+    TResult? Function(Seek value)? seek,
+  }) {
+    return play?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitIsolate value)? initIsolate,
+    TResult Function(_DisposeIsolate value)? disposeIsolate,
+    TResult Function(_LoadFromDb value)? loadFromDb,
+    TResult Function(_SaveToDb value)? saveToDb,
+    TResult Function(Pause value)? pause,
+    TResult Function(Play value)? play,
+    TResult Function(Seek value)? seek,
+    required TResult orElse(),
+  }) {
+    if (play != null) {
+      return play(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Play implements AudioPlaybackEvent {
+  const factory Play({required final String url}) = _$PlayImpl;
+
+  String get url;
+  @JsonKey(ignore: true)
+  _$$PlayImplCopyWith<_$PlayImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SeekImplCopyWith<$Res> {
+  factory _$$SeekImplCopyWith(
+          _$SeekImpl value, $Res Function(_$SeekImpl) then) =
+      __$$SeekImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Duration duration});
+}
+
+/// @nodoc
+class __$$SeekImplCopyWithImpl<$Res>
+    extends _$AudioPlaybackEventCopyWithImpl<$Res, _$SeekImpl>
+    implements _$$SeekImplCopyWith<$Res> {
+  __$$SeekImplCopyWithImpl(_$SeekImpl _value, $Res Function(_$SeekImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? duration = null,
+  }) {
+    return _then(_$SeekImpl(
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SeekImpl implements Seek {
+  const _$SeekImpl({required this.duration});
+
+  @override
+  final Duration duration;
+
+  @override
+  String toString() {
+    return 'AudioPlaybackEvent.seek(duration: $duration)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SeekImpl &&
+            (identical(other.duration, duration) ||
+                other.duration == duration));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, duration);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SeekImplCopyWith<_$SeekImpl> get copyWith =>
+      __$$SeekImplCopyWithImpl<_$SeekImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initIsolate,
+    required TResult Function() disposeIsolate,
+    required TResult Function() loadFromDb,
+    required TResult Function(String currentTrackId, int currentPosition)
+        saveToDb,
+    required TResult Function() pause,
+    required TResult Function(String url) play,
+    required TResult Function(Duration duration) seek,
+  }) {
+    return seek(duration);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initIsolate,
+    TResult? Function()? disposeIsolate,
+    TResult? Function()? loadFromDb,
+    TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult? Function()? pause,
+    TResult? Function(String url)? play,
+    TResult? Function(Duration duration)? seek,
+  }) {
+    return seek?.call(duration);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initIsolate,
+    TResult Function()? disposeIsolate,
+    TResult Function()? loadFromDb,
+    TResult Function(String currentTrackId, int currentPosition)? saveToDb,
+    TResult Function()? pause,
+    TResult Function(String url)? play,
+    TResult Function(Duration duration)? seek,
+    required TResult orElse(),
+  }) {
+    if (seek != null) {
+      return seek(duration);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitIsolate value) initIsolate,
+    required TResult Function(_DisposeIsolate value) disposeIsolate,
+    required TResult Function(_LoadFromDb value) loadFromDb,
+    required TResult Function(_SaveToDb value) saveToDb,
+    required TResult Function(Pause value) pause,
+    required TResult Function(Play value) play,
+    required TResult Function(Seek value) seek,
+  }) {
+    return seek(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitIsolate value)? initIsolate,
+    TResult? Function(_DisposeIsolate value)? disposeIsolate,
+    TResult? Function(_LoadFromDb value)? loadFromDb,
+    TResult? Function(_SaveToDb value)? saveToDb,
+    TResult? Function(Pause value)? pause,
+    TResult? Function(Play value)? play,
+    TResult? Function(Seek value)? seek,
+  }) {
+    return seek?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitIsolate value)? initIsolate,
+    TResult Function(_DisposeIsolate value)? disposeIsolate,
+    TResult Function(_LoadFromDb value)? loadFromDb,
+    TResult Function(_SaveToDb value)? saveToDb,
+    TResult Function(Pause value)? pause,
+    TResult Function(Play value)? play,
+    TResult Function(Seek value)? seek,
+    required TResult orElse(),
+  }) {
+    if (seek != null) {
+      return seek(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Seek implements AudioPlaybackEvent {
+  const factory Seek({required final Duration duration}) = _$SeekImpl;
+
+  Duration get duration;
+  @JsonKey(ignore: true)
+  _$$SeekImplCopyWith<_$SeekImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -314,7 +1148,7 @@ mixin _$PlaybackPositionState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PlaybackState playbackState) loaded,
+    required TResult Function(PlaybackStateEntity playbackStateEntity) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -322,7 +1156,7 @@ mixin _$PlaybackPositionState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PlaybackState playbackState)? loaded,
+    TResult? Function(PlaybackStateEntity playbackStateEntity)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -330,7 +1164,7 @@ mixin _$PlaybackPositionState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PlaybackState playbackState)? loaded,
+    TResult Function(PlaybackStateEntity playbackStateEntity)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -421,7 +1255,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PlaybackState playbackState) loaded,
+    required TResult Function(PlaybackStateEntity playbackStateEntity) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -432,7 +1266,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PlaybackState playbackState)? loaded,
+    TResult? Function(PlaybackStateEntity playbackStateEntity)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -443,7 +1277,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PlaybackState playbackState)? loaded,
+    TResult Function(PlaybackStateEntity playbackStateEntity)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -535,7 +1369,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PlaybackState playbackState) loaded,
+    required TResult Function(PlaybackStateEntity playbackStateEntity) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -546,7 +1380,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PlaybackState playbackState)? loaded,
+    TResult? Function(PlaybackStateEntity playbackStateEntity)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -557,7 +1391,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PlaybackState playbackState)? loaded,
+    TResult Function(PlaybackStateEntity playbackStateEntity)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -615,7 +1449,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PlaybackState playbackState});
+  $Res call({PlaybackStateEntity playbackStateEntity});
 }
 
 /// @nodoc
@@ -629,13 +1463,13 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? playbackState = null,
+    Object? playbackStateEntity = null,
   }) {
     return _then(_$LoadedImpl(
-      playbackState: null == playbackState
-          ? _value.playbackState
-          : playbackState // ignore: cast_nullable_to_non_nullable
-              as PlaybackState,
+      playbackStateEntity: null == playbackStateEntity
+          ? _value.playbackStateEntity
+          : playbackStateEntity // ignore: cast_nullable_to_non_nullable
+              as PlaybackStateEntity,
     ));
   }
 }
@@ -643,14 +1477,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.playbackState});
+  const _$LoadedImpl({required this.playbackStateEntity});
 
   @override
-  final PlaybackState playbackState;
+  final PlaybackStateEntity playbackStateEntity;
 
   @override
   String toString() {
-    return 'PlaybackPositionState.loaded(playbackState: $playbackState)';
+    return 'PlaybackPositionState.loaded(playbackStateEntity: $playbackStateEntity)';
   }
 
   @override
@@ -658,12 +1492,12 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.playbackState, playbackState) ||
-                other.playbackState == playbackState));
+            (identical(other.playbackStateEntity, playbackStateEntity) ||
+                other.playbackStateEntity == playbackStateEntity));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, playbackState);
+  int get hashCode => Object.hash(runtimeType, playbackStateEntity);
 
   @JsonKey(ignore: true)
   @override
@@ -676,10 +1510,10 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PlaybackState playbackState) loaded,
+    required TResult Function(PlaybackStateEntity playbackStateEntity) loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(playbackState);
+    return loaded(playbackStateEntity);
   }
 
   @override
@@ -687,10 +1521,10 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PlaybackState playbackState)? loaded,
+    TResult? Function(PlaybackStateEntity playbackStateEntity)? loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(playbackState);
+    return loaded?.call(playbackStateEntity);
   }
 
   @override
@@ -698,12 +1532,12 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PlaybackState playbackState)? loaded,
+    TResult Function(PlaybackStateEntity playbackStateEntity)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(playbackState);
+      return loaded(playbackStateEntity);
     }
     return orElse();
   }
@@ -747,10 +1581,10 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements PlaybackPositionState {
-  const factory _Loaded({required final PlaybackState playbackState}) =
-      _$LoadedImpl;
+  const factory _Loaded(
+      {required final PlaybackStateEntity playbackStateEntity}) = _$LoadedImpl;
 
-  PlaybackState get playbackState;
+  PlaybackStateEntity get playbackStateEntity;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -822,7 +1656,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(PlaybackState playbackState) loaded,
+    required TResult Function(PlaybackStateEntity playbackStateEntity) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -833,7 +1667,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(PlaybackState playbackState)? loaded,
+    TResult? Function(PlaybackStateEntity playbackStateEntity)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -844,7 +1678,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(PlaybackState playbackState)? loaded,
+    TResult Function(PlaybackStateEntity playbackStateEntity)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

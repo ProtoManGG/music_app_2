@@ -1,25 +1,147 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:isolate';
+
+import 'package:music_app_2/features/feature2/presentation/views/isolate_helper.dart';
 import 'package:path_provider/path_provider.dart';
+
 import '../models/playback_state_model.dart';
 
-class PlaybackLocalDataSource {
-  Future<File> _getFile() async {
+abstract interface class PlaybackLocalDataSource {
+  Future<void> initIsolate();
+  void disposeIsolate();
+  Future<PlaybackStateModel?> loadFromDb();
+  Future<void> saveToDb({
+    required String currentTrackId,
+    required int currentPosition,
+  });
+}
+
+class PlaybackLocalDataSourceImpl implements PlaybackLocalDataSource {
+  Isolate? _isolate;
+  SendPort? _sendPort;
+  String? _filePath;
+  final Completer<void> _isolateReady = Completer<void>();
+
+  @override
+  Future<void> initIsolate() async {
     final dir = await getApplicationDocumentsDirectory();
-    return File('${dir.path}/playback_state.json');
+    _filePath = '${dir.path}/playback_state.json';
+
+    final receivePort = ReceivePort();
+    _isolate = await Isolate.spawn(isolateFunction, receivePort.sendPort);
+
+    _sendPort = await receivePort.first;
+
+    // Initialize the isolate with the file path
+    final responsePort = ReceivePort();
+    _sendPort!.send({
+      'path': _filePath,
+      'responsePort': responsePort.sendPort
+    }); // Send response port
+
+    await for (var message in responsePort) {
+      if (message == 'Initialized') {
+        print(
+            'Main thread received message: Initialized'); // Log received message
+        responsePort.close();
+        _isolateReady.complete();
+        break;
+      }
+    }
   }
 
-  Future<void> saveState(PlaybackStateModel state) async {
-    final file = await _getFile();
-    await file.writeAsString(json.encode(state.toJson()));
-  }
+  @override
+  Future<PlaybackStateModel?> loadFromDb() async {
+    final dir = await getApplicationDocumentsDirectory();
+    final filePath = '${dir.path}/playback_state.json';
+    final file = File(filePath);
 
-  Future<PlaybackStateModel?> loadState() async {
-    final file = await _getFile();
     if (await file.exists()) {
       final contents = await file.readAsString();
-      return PlaybackStateModel.fromJson(json.decode(contents));
+      print('Loaded contents: $contents'); // Log the contents of the file
+      final data = json.decode(contents);
+
+      // Assuming you have a method to set the audio player state
+      if (data is Map<String, dynamic>) {
+        final trackId = data['currentTrackId'];
+        final position = data['currentPosition'];
+
+        print(
+            'Loaded state: trackId = $trackId, position = $position'); // Log loaded state
+        return PlaybackStateModel(
+          currentTrackId: trackId,
+          currentPosition: position,
+        );
+      } else {
+        return null;
+      }
+    } else {
+      print(
+          'Playback state file does not exist.'); // Log if the file does not exist
+      return null;
     }
-    return null;
+  }
+
+  @override
+  Future<void> saveToDb({
+    required String currentTrackId,
+    required int currentPosition,
+  }) async {
+    // await _initIsolate();
+    // final dir = await getApplicationDocumentsDirectory();
+    // final isolateToken = ServicesBinding.rootIsolateToken!;
+    // BackgroundIsolateBinaryMessenger.ensureInitialized(isolateToken);
+    // return await Isolate.run<void>(() async {
+    //   try {
+    //     final file = File('${dir.path}/playback_state.json');
+    //     await file.writeAsString(json.encode({
+    //       'currentTrackId': currentTrackId,
+    //       'currentPosition': currentPosition,
+    //     }));
+    //     print("+++ WRITE $currentPosition");
+    //   } catch (e) {
+    //     print("Error getting application documents directory: $e");
+    //   }
+    // });
+
+    //-
+    await _isolateReady.future; // Wait for isolate to be ready
+    if (_sendPort != null) {
+      final completer = Completer<void>();
+      final responsePort = ReceivePort();
+
+      // Send the current track ID and position to the isolate
+      _sendPort!.send({
+        'trackId': currentTrackId,
+        'position': currentPosition,
+      });
+
+      responsePort.listen((message) {
+        if (message == 'Saved') {
+          completer.complete();
+          responsePort.close();
+        }
+      });
+
+      await completer.future;
+
+      // Log the saved state
+      final dir = await getApplicationDocumentsDirectory();
+      final filePath = '${dir.path}/playback_state.json';
+      final file = File(filePath);
+      final contents = await file.readAsString();
+      print('Saved contents: $contents'); // Log the contents after saving
+    }
+  }
+
+  @override
+  void disposeIsolate() {
+    if (_isolate != null) {
+      _sendPort?.send('exit');
+      _isolate!.kill(priority: Isolate.immediate);
+      _isolate = null;
+    }
   }
 }

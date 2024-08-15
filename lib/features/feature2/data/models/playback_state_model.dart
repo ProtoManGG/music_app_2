@@ -1,6 +1,6 @@
 import '../../domain/entities/playback_state.dart';
 
-class PlaybackStateModel extends PlaybackState {
+class PlaybackStateModel extends PlaybackStateEntity {
   PlaybackStateModel({
     required super.currentTrackId,
     required super.currentPosition,

@@ -4,11 +4,12 @@ import 'package:just_audio_background/just_audio_background.dart';
 import 'package:music_app_2/features/feature2/data/data_sources/playback_local_data_source.dart';
 import 'package:music_app_2/features/feature2/data/repositories/playback_repository_impl.dart';
 import 'package:music_app_2/features/feature2/domain/repositories/playback_repository.dart';
-import 'package:music_app_2/features/feature2/domain/use_cases/load_playback_state.dart';
-import 'package:music_app_2/features/feature2/domain/use_cases/save_playback_state.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/dispose_isolate.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/init_isolate.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/load_from_db.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/save_to_db.dart';
 import 'package:music_app_2/features/feature2/presentation/bloc/playback_position_bloc.dart';
 import 'package:music_app_2/features/feature2/presentation/views/audio_player_screen.dart';
-import 'package:music_app_2/features/feature2/presentation/views/audio_player_screen_2.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,11 +23,14 @@ Future<void> main() async {
       providers: [
         BlocProvider(
           create: (context) {
-            final dataSource = PlaybackLocalDataSource();
+            final PlaybackLocalDataSource dataSource =
+                PlaybackLocalDataSourceImpl();
             final PlaybackRepository repo = PlaybackRepositoryImpl(dataSource);
             return PlaybackPositionBloc(
-              loadPlaybackState: LoadPlaybackState(repo),
-              savePlaybackState: SavePlaybackState(repo),
+              loadFromDb: LoadFromDb(repo),
+              saveToDb: SaveToDb(repo),
+              initIsolate: InitIsolate(repo),
+              disposeIsolate: DisposeIsolate(repo),
             );
           },
         ),
