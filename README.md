@@ -1,16 +1,30 @@
-# music_app_2
+# 🎵 Flutter Audio Player App for iOS 🎵
 
-A new Flutter project.
+## 🎯 Objective
 
-## Getting Started
+This Flutter app demonstrates an audio player for iOS, showcasing Clean Architecture, MVVM, and state management using BLoC. The app plays m3u8 HLS audio streams and includes several key features.
 
-This project is a starting point for a Flutter application.
+## ✨ Key Features
 
-A few resources to get you started if this is your first Flutter project:
+1. 🔊 **M3U8 HLS Audio Playback**
+   - Playback of HTTP Live Streaming audio formats - Please note this is dumy project I have just hardcoded a static url for now.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2. 🎛️ **Player Controls**
+   - ▶️ Play/Pause functionality
+   - ⏪ Rewind 10 seconds
+   - ⏩ Fast forward 10 seconds
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. 🏃‍♂️ **Background Media Playback**
+   - Continuous audio playback when app is minimized or screen is off
+
+4. 💾 **State Preservation** (Optional)
+   - Retains track state when app is closed and reopened
+
+## 🛠️ Technical Requirements
+
+1. 🏗️ **Architectural Pattern**
+   - Implemented using Clean Architecture
+   - BLoC for state management
+
+2. 🧵 **Background Playback**
+   - Utilizes Flutter Isolates for storing/re-storing last played position
