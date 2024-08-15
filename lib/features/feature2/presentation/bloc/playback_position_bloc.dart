@@ -7,7 +7,10 @@ import 'package:music_app_2/features/feature2/domain/entities/playback_state.dar
 import 'package:music_app_2/features/feature2/domain/use_cases/dispose_isolate.dart';
 import 'package:music_app_2/features/feature2/domain/use_cases/init_isolate.dart';
 import 'package:music_app_2/features/feature2/domain/use_cases/load_from_db.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/pause_audio.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/play_audio.dart';
 import 'package:music_app_2/features/feature2/domain/use_cases/save_to_db.dart';
+import 'package:music_app_2/features/feature2/domain/use_cases/seek_audio.dart';
 
 part 'playback_position_bloc.freezed.dart';
 part 'playback_position_event.dart';
@@ -19,16 +22,25 @@ class PlaybackPositionBloc
   final SaveToDb _saveToDb;
   final InitIsolate _initIsolate;
   final DisposeIsolate _disposeIsolate;
+  final PauseAudio _pauseAudio;
+  final PlayAudio _playAudio;
+  final SeekAudio _seekAudio;
 
   PlaybackPositionBloc({
     required LoadFromDb loadFromDb,
     required SaveToDb saveToDb,
     required InitIsolate initIsolate,
     required DisposeIsolate disposeIsolate,
+    required PauseAudio pauseAudio,
+    required PlayAudio playAudio,
+    required SeekAudio seekAudio,
   })  : _loadFromDb = loadFromDb,
         _saveToDb = saveToDb,
         _initIsolate = initIsolate,
         _disposeIsolate = disposeIsolate,
+        _pauseAudio = pauseAudio,
+        _playAudio = playAudio,
+        _seekAudio = seekAudio,
         super(const _Initial()) {
     on<AudioPlaybackEvent>(
         (_, emit) => emit(const PlaybackPositionState.loading()));
@@ -36,9 +48,9 @@ class PlaybackPositionBloc
     on<_SaveToDb>(_onSaveToDb);
     on<_InitIsolate>(_onInitIsolate);
     on<_DisposeIsolate>(_onDisposeIsolate);
-    // on<_Load>((event, emit) async {
-    //   await _loadPlaybackState();
-    // });
+    on<_Pause>(_onPause);
+    on<_Play>(_onPlay);
+    on<_Seek>(_onSeek);
   }
 
   Future<void> _onSaveToDb(
@@ -91,6 +103,39 @@ class PlaybackPositionBloc
     Emitter<PlaybackPositionState> emit,
   ) async {
     final result = await _disposeIsolate(NoParams());
+    result.fold(
+      (l) => emit(PlaybackPositionState.error(message: l.message)),
+      (r) {},
+    );
+  }
+
+  Future<void> _onPause(
+    _Pause event,
+    Emitter<PlaybackPositionState> emit,
+  ) async {
+    final result = await _pauseAudio(NoParams());
+    result.fold(
+      (l) => emit(PlaybackPositionState.error(message: l.message)),
+      (r) {},
+    );
+  }
+
+  Future<void> _onPlay(
+    _Play event,
+    Emitter<PlaybackPositionState> emit,
+  ) async {
+    final result = await _playAudio(PlayAudioParams(url: event.url));
+    result.fold(
+      (l) => emit(PlaybackPositionState.error(message: l.message)),
+      (r) {},
+    );
+  }
+
+  Future<void> _onSeek(
+    _Seek event,
+    Emitter<PlaybackPositionState> emit,
+  ) async {
+    final result = await _seekAudio(SeekAudioParams(seconds: event.seconds));
     result.fold(
       (l) => emit(PlaybackPositionState.error(message: l.message)),
       (r) {},

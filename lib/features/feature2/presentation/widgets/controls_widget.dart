@@ -1,12 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
+
+import 'package:music_app_2/features/feature2/presentation/bloc/playback_position_bloc.dart';
 
 class Controls extends StatelessWidget {
   const Controls({
     super.key,
     required this.audioPlayer,
   });
-
   final AudioPlayer audioPlayer;
 
   @override
@@ -16,8 +19,9 @@ class Controls extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () {
-            audioPlayer
-                .seek(Duration(seconds: audioPlayer.position.inSeconds - 10));
+            context
+                .read<PlaybackPositionBloc>()
+                .add(const AudioPlaybackEvent.seek(seconds: -10));
           },
           icon: const Icon(
             Icons.replay_10_rounded,
@@ -34,7 +38,11 @@ class Controls extends StatelessWidget {
 
             if (!(playing ?? false)) {
               return IconButton(
-                onPressed: audioPlayer.play,
+                onPressed: () {
+                  context
+                      .read<PlaybackPositionBloc>()
+                      .add(const AudioPlaybackEvent.play(url: 'url'));
+                },
                 icon: const Icon(
                   Icons.play_arrow_rounded,
                   size: 80,
@@ -43,7 +51,11 @@ class Controls extends StatelessWidget {
               );
             } else if (processingState != ProcessingState.completed) {
               return IconButton(
-                onPressed: audioPlayer.pause,
+                onPressed: () {
+                  context
+                      .read<PlaybackPositionBloc>()
+                      .add(const AudioPlaybackEvent.pause());
+                },
                 icon: const Icon(
                   Icons.pause_rounded,
                   size: 80,
@@ -61,8 +73,9 @@ class Controls extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {
-            audioPlayer
-                .seek(Duration(seconds: audioPlayer.position.inSeconds + 10));
+            context
+                .read<PlaybackPositionBloc>()
+                .add(const AudioPlaybackEvent.seek(seconds: 10));
           },
           icon: const Icon(
             Icons.forward_10_rounded,

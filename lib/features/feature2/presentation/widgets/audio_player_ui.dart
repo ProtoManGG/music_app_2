@@ -2,9 +2,9 @@ import 'package:audio_service/audio_service.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:music_app_2/features/music_playback/domain/entitites/position_data.dart';
+import 'package:music_app_2/features/feature2/domain/entities/position_data.dart';
 import 'package:music_app_2/features/feature2/presentation/widgets/controls_widget.dart';
-import 'package:music_app_2/features/music_playback/presentation/widgets/media_metadata_widget.dart';
+import 'package:music_app_2/features/feature2/presentation/widgets/media_metadata_widget.dart';
 
 class AudioPlayerUI extends StatelessWidget {
   final AudioPlayer audioPlayer;

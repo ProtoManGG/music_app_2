@@ -11,4 +11,7 @@ abstract interface class PlaybackRepository {
   });
   Future<Either<Failure, PlaybackStateEntity>> loadFromDb();
   Either<Failure, void> disposeIsolate();
+  Future<Either<Failure, void>> playAudio(String url);
+  Future<Either<Failure, void>> pauseAudio();
+  Future<Either<Failure, void>> seekAudio(int seconds);
 }

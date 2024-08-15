@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:music_app_2/features/feature2/presentation/bloc/playback_position_bloc.dart';
 import 'package:music_app_2/features/feature2/presentation/widgets/audio_player_ui.dart';
-import 'package:music_app_2/features/music_playback/domain/entitites/position_data.dart';
+import 'package:music_app_2/features/feature2/domain/entities/position_data.dart';
 import 'package:rxdart/rxdart.dart';
 
 class AudioPlayerScreen extends StatefulWidget {
@@ -126,7 +126,11 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                 ),
               );
             },
-            error: (error) {},
+            error: (error) {
+              ScaffoldMessenger.of(context)
+                ..clearSnackBars()
+                ..showSnackBar(SnackBar(content: Text(error.message)));
+            },
           );
         },
         child: AudioPlayerUI(

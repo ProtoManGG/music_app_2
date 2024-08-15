@@ -25,7 +25,7 @@ mixin _$AudioPlaybackEvent {
         saveToDb,
     required TResult Function() pause,
     required TResult Function(String url) play,
-    required TResult Function(Duration duration) seek,
+    required TResult Function(int seconds) seek,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,7 +36,7 @@ mixin _$AudioPlaybackEvent {
     TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult? Function()? pause,
     TResult? Function(String url)? play,
-    TResult? Function(Duration duration)? seek,
+    TResult? Function(int seconds)? seek,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,7 +47,7 @@ mixin _$AudioPlaybackEvent {
     TResult Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult Function()? pause,
     TResult Function(String url)? play,
-    TResult Function(Duration duration)? seek,
+    TResult Function(int seconds)? seek,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -57,9 +57,9 @@ mixin _$AudioPlaybackEvent {
     required TResult Function(_DisposeIsolate value) disposeIsolate,
     required TResult Function(_LoadFromDb value) loadFromDb,
     required TResult Function(_SaveToDb value) saveToDb,
-    required TResult Function(Pause value) pause,
-    required TResult Function(Play value) play,
-    required TResult Function(Seek value) seek,
+    required TResult Function(_Pause value) pause,
+    required TResult Function(_Play value) play,
+    required TResult Function(_Seek value) seek,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,9 +68,9 @@ mixin _$AudioPlaybackEvent {
     TResult? Function(_DisposeIsolate value)? disposeIsolate,
     TResult? Function(_LoadFromDb value)? loadFromDb,
     TResult? Function(_SaveToDb value)? saveToDb,
-    TResult? Function(Pause value)? pause,
-    TResult? Function(Play value)? play,
-    TResult? Function(Seek value)? seek,
+    TResult? Function(_Pause value)? pause,
+    TResult? Function(_Play value)? play,
+    TResult? Function(_Seek value)? seek,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,9 +79,9 @@ mixin _$AudioPlaybackEvent {
     TResult Function(_DisposeIsolate value)? disposeIsolate,
     TResult Function(_LoadFromDb value)? loadFromDb,
     TResult Function(_SaveToDb value)? saveToDb,
-    TResult Function(Pause value)? pause,
-    TResult Function(Play value)? play,
-    TResult Function(Seek value)? seek,
+    TResult Function(_Pause value)? pause,
+    TResult Function(_Play value)? play,
+    TResult Function(_Seek value)? seek,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -150,7 +150,7 @@ class _$InitIsolateImpl implements _InitIsolate {
         saveToDb,
     required TResult Function() pause,
     required TResult Function(String url) play,
-    required TResult Function(Duration duration) seek,
+    required TResult Function(int seconds) seek,
   }) {
     return initIsolate();
   }
@@ -164,7 +164,7 @@ class _$InitIsolateImpl implements _InitIsolate {
     TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult? Function()? pause,
     TResult? Function(String url)? play,
-    TResult? Function(Duration duration)? seek,
+    TResult? Function(int seconds)? seek,
   }) {
     return initIsolate?.call();
   }
@@ -178,7 +178,7 @@ class _$InitIsolateImpl implements _InitIsolate {
     TResult Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult Function()? pause,
     TResult Function(String url)? play,
-    TResult Function(Duration duration)? seek,
+    TResult Function(int seconds)? seek,
     required TResult orElse(),
   }) {
     if (initIsolate != null) {
@@ -194,9 +194,9 @@ class _$InitIsolateImpl implements _InitIsolate {
     required TResult Function(_DisposeIsolate value) disposeIsolate,
     required TResult Function(_LoadFromDb value) loadFromDb,
     required TResult Function(_SaveToDb value) saveToDb,
-    required TResult Function(Pause value) pause,
-    required TResult Function(Play value) play,
-    required TResult Function(Seek value) seek,
+    required TResult Function(_Pause value) pause,
+    required TResult Function(_Play value) play,
+    required TResult Function(_Seek value) seek,
   }) {
     return initIsolate(this);
   }
@@ -208,9 +208,9 @@ class _$InitIsolateImpl implements _InitIsolate {
     TResult? Function(_DisposeIsolate value)? disposeIsolate,
     TResult? Function(_LoadFromDb value)? loadFromDb,
     TResult? Function(_SaveToDb value)? saveToDb,
-    TResult? Function(Pause value)? pause,
-    TResult? Function(Play value)? play,
-    TResult? Function(Seek value)? seek,
+    TResult? Function(_Pause value)? pause,
+    TResult? Function(_Play value)? play,
+    TResult? Function(_Seek value)? seek,
   }) {
     return initIsolate?.call(this);
   }
@@ -222,9 +222,9 @@ class _$InitIsolateImpl implements _InitIsolate {
     TResult Function(_DisposeIsolate value)? disposeIsolate,
     TResult Function(_LoadFromDb value)? loadFromDb,
     TResult Function(_SaveToDb value)? saveToDb,
-    TResult Function(Pause value)? pause,
-    TResult Function(Play value)? play,
-    TResult Function(Seek value)? seek,
+    TResult Function(_Pause value)? pause,
+    TResult Function(_Play value)? play,
+    TResult Function(_Seek value)? seek,
     required TResult orElse(),
   }) {
     if (initIsolate != null) {
@@ -283,7 +283,7 @@ class _$DisposeIsolateImpl implements _DisposeIsolate {
         saveToDb,
     required TResult Function() pause,
     required TResult Function(String url) play,
-    required TResult Function(Duration duration) seek,
+    required TResult Function(int seconds) seek,
   }) {
     return disposeIsolate();
   }
@@ -297,7 +297,7 @@ class _$DisposeIsolateImpl implements _DisposeIsolate {
     TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult? Function()? pause,
     TResult? Function(String url)? play,
-    TResult? Function(Duration duration)? seek,
+    TResult? Function(int seconds)? seek,
   }) {
     return disposeIsolate?.call();
   }
@@ -311,7 +311,7 @@ class _$DisposeIsolateImpl implements _DisposeIsolate {
     TResult Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult Function()? pause,
     TResult Function(String url)? play,
-    TResult Function(Duration duration)? seek,
+    TResult Function(int seconds)? seek,
     required TResult orElse(),
   }) {
     if (disposeIsolate != null) {
@@ -327,9 +327,9 @@ class _$DisposeIsolateImpl implements _DisposeIsolate {
     required TResult Function(_DisposeIsolate value) disposeIsolate,
     required TResult Function(_LoadFromDb value) loadFromDb,
     required TResult Function(_SaveToDb value) saveToDb,
-    required TResult Function(Pause value) pause,
-    required TResult Function(Play value) play,
-    required TResult Function(Seek value) seek,
+    required TResult Function(_Pause value) pause,
+    required TResult Function(_Play value) play,
+    required TResult Function(_Seek value) seek,
   }) {
     return disposeIsolate(this);
   }
@@ -341,9 +341,9 @@ class _$DisposeIsolateImpl implements _DisposeIsolate {
     TResult? Function(_DisposeIsolate value)? disposeIsolate,
     TResult? Function(_LoadFromDb value)? loadFromDb,
     TResult? Function(_SaveToDb value)? saveToDb,
-    TResult? Function(Pause value)? pause,
-    TResult? Function(Play value)? play,
-    TResult? Function(Seek value)? seek,
+    TResult? Function(_Pause value)? pause,
+    TResult? Function(_Play value)? play,
+    TResult? Function(_Seek value)? seek,
   }) {
     return disposeIsolate?.call(this);
   }
@@ -355,9 +355,9 @@ class _$DisposeIsolateImpl implements _DisposeIsolate {
     TResult Function(_DisposeIsolate value)? disposeIsolate,
     TResult Function(_LoadFromDb value)? loadFromDb,
     TResult Function(_SaveToDb value)? saveToDb,
-    TResult Function(Pause value)? pause,
-    TResult Function(Play value)? play,
-    TResult Function(Seek value)? seek,
+    TResult Function(_Pause value)? pause,
+    TResult Function(_Play value)? play,
+    TResult Function(_Seek value)? seek,
     required TResult orElse(),
   }) {
     if (disposeIsolate != null) {
@@ -416,7 +416,7 @@ class _$LoadFromDbImpl implements _LoadFromDb {
         saveToDb,
     required TResult Function() pause,
     required TResult Function(String url) play,
-    required TResult Function(Duration duration) seek,
+    required TResult Function(int seconds) seek,
   }) {
     return loadFromDb();
   }
@@ -430,7 +430,7 @@ class _$LoadFromDbImpl implements _LoadFromDb {
     TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult? Function()? pause,
     TResult? Function(String url)? play,
-    TResult? Function(Duration duration)? seek,
+    TResult? Function(int seconds)? seek,
   }) {
     return loadFromDb?.call();
   }
@@ -444,7 +444,7 @@ class _$LoadFromDbImpl implements _LoadFromDb {
     TResult Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult Function()? pause,
     TResult Function(String url)? play,
-    TResult Function(Duration duration)? seek,
+    TResult Function(int seconds)? seek,
     required TResult orElse(),
   }) {
     if (loadFromDb != null) {
@@ -460,9 +460,9 @@ class _$LoadFromDbImpl implements _LoadFromDb {
     required TResult Function(_DisposeIsolate value) disposeIsolate,
     required TResult Function(_LoadFromDb value) loadFromDb,
     required TResult Function(_SaveToDb value) saveToDb,
-    required TResult Function(Pause value) pause,
-    required TResult Function(Play value) play,
-    required TResult Function(Seek value) seek,
+    required TResult Function(_Pause value) pause,
+    required TResult Function(_Play value) play,
+    required TResult Function(_Seek value) seek,
   }) {
     return loadFromDb(this);
   }
@@ -474,9 +474,9 @@ class _$LoadFromDbImpl implements _LoadFromDb {
     TResult? Function(_DisposeIsolate value)? disposeIsolate,
     TResult? Function(_LoadFromDb value)? loadFromDb,
     TResult? Function(_SaveToDb value)? saveToDb,
-    TResult? Function(Pause value)? pause,
-    TResult? Function(Play value)? play,
-    TResult? Function(Seek value)? seek,
+    TResult? Function(_Pause value)? pause,
+    TResult? Function(_Play value)? play,
+    TResult? Function(_Seek value)? seek,
   }) {
     return loadFromDb?.call(this);
   }
@@ -488,9 +488,9 @@ class _$LoadFromDbImpl implements _LoadFromDb {
     TResult Function(_DisposeIsolate value)? disposeIsolate,
     TResult Function(_LoadFromDb value)? loadFromDb,
     TResult Function(_SaveToDb value)? saveToDb,
-    TResult Function(Pause value)? pause,
-    TResult Function(Play value)? play,
-    TResult Function(Seek value)? seek,
+    TResult Function(_Pause value)? pause,
+    TResult Function(_Play value)? play,
+    TResult Function(_Seek value)? seek,
     required TResult orElse(),
   }) {
     if (loadFromDb != null) {
@@ -586,7 +586,7 @@ class _$SaveToDbImpl implements _SaveToDb {
         saveToDb,
     required TResult Function() pause,
     required TResult Function(String url) play,
-    required TResult Function(Duration duration) seek,
+    required TResult Function(int seconds) seek,
   }) {
     return saveToDb(currentTrackId, currentPosition);
   }
@@ -600,7 +600,7 @@ class _$SaveToDbImpl implements _SaveToDb {
     TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult? Function()? pause,
     TResult? Function(String url)? play,
-    TResult? Function(Duration duration)? seek,
+    TResult? Function(int seconds)? seek,
   }) {
     return saveToDb?.call(currentTrackId, currentPosition);
   }
@@ -614,7 +614,7 @@ class _$SaveToDbImpl implements _SaveToDb {
     TResult Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult Function()? pause,
     TResult Function(String url)? play,
-    TResult Function(Duration duration)? seek,
+    TResult Function(int seconds)? seek,
     required TResult orElse(),
   }) {
     if (saveToDb != null) {
@@ -630,9 +630,9 @@ class _$SaveToDbImpl implements _SaveToDb {
     required TResult Function(_DisposeIsolate value) disposeIsolate,
     required TResult Function(_LoadFromDb value) loadFromDb,
     required TResult Function(_SaveToDb value) saveToDb,
-    required TResult Function(Pause value) pause,
-    required TResult Function(Play value) play,
-    required TResult Function(Seek value) seek,
+    required TResult Function(_Pause value) pause,
+    required TResult Function(_Play value) play,
+    required TResult Function(_Seek value) seek,
   }) {
     return saveToDb(this);
   }
@@ -644,9 +644,9 @@ class _$SaveToDbImpl implements _SaveToDb {
     TResult? Function(_DisposeIsolate value)? disposeIsolate,
     TResult? Function(_LoadFromDb value)? loadFromDb,
     TResult? Function(_SaveToDb value)? saveToDb,
-    TResult? Function(Pause value)? pause,
-    TResult? Function(Play value)? play,
-    TResult? Function(Seek value)? seek,
+    TResult? Function(_Pause value)? pause,
+    TResult? Function(_Play value)? play,
+    TResult? Function(_Seek value)? seek,
   }) {
     return saveToDb?.call(this);
   }
@@ -658,9 +658,9 @@ class _$SaveToDbImpl implements _SaveToDb {
     TResult Function(_DisposeIsolate value)? disposeIsolate,
     TResult Function(_LoadFromDb value)? loadFromDb,
     TResult Function(_SaveToDb value)? saveToDb,
-    TResult Function(Pause value)? pause,
-    TResult Function(Play value)? play,
-    TResult Function(Seek value)? seek,
+    TResult Function(_Pause value)? pause,
+    TResult Function(_Play value)? play,
+    TResult Function(_Seek value)? seek,
     required TResult orElse(),
   }) {
     if (saveToDb != null) {
@@ -700,7 +700,7 @@ class __$$PauseImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PauseImpl implements Pause {
+class _$PauseImpl implements _Pause {
   const _$PauseImpl();
 
   @override
@@ -727,7 +727,7 @@ class _$PauseImpl implements Pause {
         saveToDb,
     required TResult Function() pause,
     required TResult Function(String url) play,
-    required TResult Function(Duration duration) seek,
+    required TResult Function(int seconds) seek,
   }) {
     return pause();
   }
@@ -741,7 +741,7 @@ class _$PauseImpl implements Pause {
     TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult? Function()? pause,
     TResult? Function(String url)? play,
-    TResult? Function(Duration duration)? seek,
+    TResult? Function(int seconds)? seek,
   }) {
     return pause?.call();
   }
@@ -755,7 +755,7 @@ class _$PauseImpl implements Pause {
     TResult Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult Function()? pause,
     TResult Function(String url)? play,
-    TResult Function(Duration duration)? seek,
+    TResult Function(int seconds)? seek,
     required TResult orElse(),
   }) {
     if (pause != null) {
@@ -771,9 +771,9 @@ class _$PauseImpl implements Pause {
     required TResult Function(_DisposeIsolate value) disposeIsolate,
     required TResult Function(_LoadFromDb value) loadFromDb,
     required TResult Function(_SaveToDb value) saveToDb,
-    required TResult Function(Pause value) pause,
-    required TResult Function(Play value) play,
-    required TResult Function(Seek value) seek,
+    required TResult Function(_Pause value) pause,
+    required TResult Function(_Play value) play,
+    required TResult Function(_Seek value) seek,
   }) {
     return pause(this);
   }
@@ -785,9 +785,9 @@ class _$PauseImpl implements Pause {
     TResult? Function(_DisposeIsolate value)? disposeIsolate,
     TResult? Function(_LoadFromDb value)? loadFromDb,
     TResult? Function(_SaveToDb value)? saveToDb,
-    TResult? Function(Pause value)? pause,
-    TResult? Function(Play value)? play,
-    TResult? Function(Seek value)? seek,
+    TResult? Function(_Pause value)? pause,
+    TResult? Function(_Play value)? play,
+    TResult? Function(_Seek value)? seek,
   }) {
     return pause?.call(this);
   }
@@ -799,9 +799,9 @@ class _$PauseImpl implements Pause {
     TResult Function(_DisposeIsolate value)? disposeIsolate,
     TResult Function(_LoadFromDb value)? loadFromDb,
     TResult Function(_SaveToDb value)? saveToDb,
-    TResult Function(Pause value)? pause,
-    TResult Function(Play value)? play,
-    TResult Function(Seek value)? seek,
+    TResult Function(_Pause value)? pause,
+    TResult Function(_Play value)? play,
+    TResult Function(_Seek value)? seek,
     required TResult orElse(),
   }) {
     if (pause != null) {
@@ -811,8 +811,8 @@ class _$PauseImpl implements Pause {
   }
 }
 
-abstract class Pause implements AudioPlaybackEvent {
-  const factory Pause() = _$PauseImpl;
+abstract class _Pause implements AudioPlaybackEvent {
+  const factory _Pause() = _$PauseImpl;
 }
 
 /// @nodoc
@@ -847,7 +847,7 @@ class __$$PlayImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PlayImpl implements Play {
+class _$PlayImpl implements _Play {
   const _$PlayImpl({required this.url});
 
   @override
@@ -885,7 +885,7 @@ class _$PlayImpl implements Play {
         saveToDb,
     required TResult Function() pause,
     required TResult Function(String url) play,
-    required TResult Function(Duration duration) seek,
+    required TResult Function(int seconds) seek,
   }) {
     return play(url);
   }
@@ -899,7 +899,7 @@ class _$PlayImpl implements Play {
     TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult? Function()? pause,
     TResult? Function(String url)? play,
-    TResult? Function(Duration duration)? seek,
+    TResult? Function(int seconds)? seek,
   }) {
     return play?.call(url);
   }
@@ -913,7 +913,7 @@ class _$PlayImpl implements Play {
     TResult Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult Function()? pause,
     TResult Function(String url)? play,
-    TResult Function(Duration duration)? seek,
+    TResult Function(int seconds)? seek,
     required TResult orElse(),
   }) {
     if (play != null) {
@@ -929,9 +929,9 @@ class _$PlayImpl implements Play {
     required TResult Function(_DisposeIsolate value) disposeIsolate,
     required TResult Function(_LoadFromDb value) loadFromDb,
     required TResult Function(_SaveToDb value) saveToDb,
-    required TResult Function(Pause value) pause,
-    required TResult Function(Play value) play,
-    required TResult Function(Seek value) seek,
+    required TResult Function(_Pause value) pause,
+    required TResult Function(_Play value) play,
+    required TResult Function(_Seek value) seek,
   }) {
     return play(this);
   }
@@ -943,9 +943,9 @@ class _$PlayImpl implements Play {
     TResult? Function(_DisposeIsolate value)? disposeIsolate,
     TResult? Function(_LoadFromDb value)? loadFromDb,
     TResult? Function(_SaveToDb value)? saveToDb,
-    TResult? Function(Pause value)? pause,
-    TResult? Function(Play value)? play,
-    TResult? Function(Seek value)? seek,
+    TResult? Function(_Pause value)? pause,
+    TResult? Function(_Play value)? play,
+    TResult? Function(_Seek value)? seek,
   }) {
     return play?.call(this);
   }
@@ -957,9 +957,9 @@ class _$PlayImpl implements Play {
     TResult Function(_DisposeIsolate value)? disposeIsolate,
     TResult Function(_LoadFromDb value)? loadFromDb,
     TResult Function(_SaveToDb value)? saveToDb,
-    TResult Function(Pause value)? pause,
-    TResult Function(Play value)? play,
-    TResult Function(Seek value)? seek,
+    TResult Function(_Pause value)? pause,
+    TResult Function(_Play value)? play,
+    TResult Function(_Seek value)? seek,
     required TResult orElse(),
   }) {
     if (play != null) {
@@ -969,8 +969,8 @@ class _$PlayImpl implements Play {
   }
 }
 
-abstract class Play implements AudioPlaybackEvent {
-  const factory Play({required final String url}) = _$PlayImpl;
+abstract class _Play implements AudioPlaybackEvent {
+  const factory _Play({required final String url}) = _$PlayImpl;
 
   String get url;
   @JsonKey(ignore: true)
@@ -984,7 +984,7 @@ abstract class _$$SeekImplCopyWith<$Res> {
           _$SeekImpl value, $Res Function(_$SeekImpl) then) =
       __$$SeekImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Duration duration});
+  $Res call({int seconds});
 }
 
 /// @nodoc
@@ -997,28 +997,28 @@ class __$$SeekImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? duration = null,
+    Object? seconds = null,
   }) {
     return _then(_$SeekImpl(
-      duration: null == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as Duration,
+      seconds: null == seconds
+          ? _value.seconds
+          : seconds // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SeekImpl implements Seek {
-  const _$SeekImpl({required this.duration});
+class _$SeekImpl implements _Seek {
+  const _$SeekImpl({required this.seconds});
 
   @override
-  final Duration duration;
+  final int seconds;
 
   @override
   String toString() {
-    return 'AudioPlaybackEvent.seek(duration: $duration)';
+    return 'AudioPlaybackEvent.seek(seconds: $seconds)';
   }
 
   @override
@@ -1026,12 +1026,11 @@ class _$SeekImpl implements Seek {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SeekImpl &&
-            (identical(other.duration, duration) ||
-                other.duration == duration));
+            (identical(other.seconds, seconds) || other.seconds == seconds));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, duration);
+  int get hashCode => Object.hash(runtimeType, seconds);
 
   @JsonKey(ignore: true)
   @override
@@ -1049,9 +1048,9 @@ class _$SeekImpl implements Seek {
         saveToDb,
     required TResult Function() pause,
     required TResult Function(String url) play,
-    required TResult Function(Duration duration) seek,
+    required TResult Function(int seconds) seek,
   }) {
-    return seek(duration);
+    return seek(seconds);
   }
 
   @override
@@ -1063,9 +1062,9 @@ class _$SeekImpl implements Seek {
     TResult? Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult? Function()? pause,
     TResult? Function(String url)? play,
-    TResult? Function(Duration duration)? seek,
+    TResult? Function(int seconds)? seek,
   }) {
-    return seek?.call(duration);
+    return seek?.call(seconds);
   }
 
   @override
@@ -1077,11 +1076,11 @@ class _$SeekImpl implements Seek {
     TResult Function(String currentTrackId, int currentPosition)? saveToDb,
     TResult Function()? pause,
     TResult Function(String url)? play,
-    TResult Function(Duration duration)? seek,
+    TResult Function(int seconds)? seek,
     required TResult orElse(),
   }) {
     if (seek != null) {
-      return seek(duration);
+      return seek(seconds);
     }
     return orElse();
   }
@@ -1093,9 +1092,9 @@ class _$SeekImpl implements Seek {
     required TResult Function(_DisposeIsolate value) disposeIsolate,
     required TResult Function(_LoadFromDb value) loadFromDb,
     required TResult Function(_SaveToDb value) saveToDb,
-    required TResult Function(Pause value) pause,
-    required TResult Function(Play value) play,
-    required TResult Function(Seek value) seek,
+    required TResult Function(_Pause value) pause,
+    required TResult Function(_Play value) play,
+    required TResult Function(_Seek value) seek,
   }) {
     return seek(this);
   }
@@ -1107,9 +1106,9 @@ class _$SeekImpl implements Seek {
     TResult? Function(_DisposeIsolate value)? disposeIsolate,
     TResult? Function(_LoadFromDb value)? loadFromDb,
     TResult? Function(_SaveToDb value)? saveToDb,
-    TResult? Function(Pause value)? pause,
-    TResult? Function(Play value)? play,
-    TResult? Function(Seek value)? seek,
+    TResult? Function(_Pause value)? pause,
+    TResult? Function(_Play value)? play,
+    TResult? Function(_Seek value)? seek,
   }) {
     return seek?.call(this);
   }
@@ -1121,9 +1120,9 @@ class _$SeekImpl implements Seek {
     TResult Function(_DisposeIsolate value)? disposeIsolate,
     TResult Function(_LoadFromDb value)? loadFromDb,
     TResult Function(_SaveToDb value)? saveToDb,
-    TResult Function(Pause value)? pause,
-    TResult Function(Play value)? play,
-    TResult Function(Seek value)? seek,
+    TResult Function(_Pause value)? pause,
+    TResult Function(_Play value)? play,
+    TResult Function(_Seek value)? seek,
     required TResult orElse(),
   }) {
     if (seek != null) {
@@ -1133,10 +1132,10 @@ class _$SeekImpl implements Seek {
   }
 }
 
-abstract class Seek implements AudioPlaybackEvent {
-  const factory Seek({required final Duration duration}) = _$SeekImpl;
+abstract class _Seek implements AudioPlaybackEvent {
+  const factory _Seek({required final int seconds}) = _$SeekImpl;
 
-  Duration get duration;
+  int get seconds;
   @JsonKey(ignore: true)
   _$$SeekImplCopyWith<_$SeekImpl> get copyWith =>
       throw _privateConstructorUsedError;

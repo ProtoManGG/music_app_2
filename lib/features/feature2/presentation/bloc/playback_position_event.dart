@@ -9,7 +9,7 @@ class AudioPlaybackEvent with _$AudioPlaybackEvent {
     required String currentTrackId,
     required int currentPosition,
   }) = _SaveToDb;
-  const factory AudioPlaybackEvent.pause() = Pause;
-  const factory AudioPlaybackEvent.play({required String url}) = Play;
-  const factory AudioPlaybackEvent.seek({required Duration duration}) = Seek;
+  const factory AudioPlaybackEvent.pause() = _Pause;
+  const factory AudioPlaybackEvent.play({required String url}) = _Play;
+  const factory AudioPlaybackEvent.seek({required int seconds}) = _Seek;
 }

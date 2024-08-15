@@ -1,4 +1,4 @@
-import 'package:music_app_2/features/music_playback/domain/entitites/audio_track.dart';
+import 'package:music_app_2/features/feature2/domain/entities/audio_track.dart';
 
 class AudioTrackModel extends AudioTrack {
   const AudioTrackModel({
