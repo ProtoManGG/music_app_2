@@ -12,6 +12,4 @@ class AudioPlaybackEvent with _$AudioPlaybackEvent {
   const factory AudioPlaybackEvent.pause() = _Pause;
   const factory AudioPlaybackEvent.play() = _Play;
   const factory AudioPlaybackEvent.seek({required Duration duration}) = _Seek;
-  // const factory AudioPlaybackEvent.getDuration() = _GetDuration;
-  // const factory AudioPlaybackEvent.getPlayerStateStream() = _GetPlayerStateStream;
 }
