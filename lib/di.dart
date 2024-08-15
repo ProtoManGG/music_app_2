@@ -20,21 +20,26 @@ import 'features/music_app/presentation/bloc/playback_position_bloc.dart';
 final getIt = GetIt.instance;
 
 void setup() {
-  getIt.registerSingleton<AudioPlayer>(AudioPlayer()
-    ..setAudioSource(
-      AudioSource.uri(
-        Uri.parse(
-            'https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8'),
-        tag: MediaItem(
-          id: '0',
-          title: 'NASA\'s view on Space',
-          artist: 'NASA COM',
-          artUri: Uri.parse(
-            'https://images.unsplash.com/photo-1723375386110-729a0612ab99',
+  getIt.registerSingleton<AudioPlayer>(
+    AudioPlayer()
+      ..setAudioSource(
+        ConcatenatingAudioSource(children: [
+          AudioSource.uri(
+            Uri.parse(
+                'https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8'),
+            tag: MediaItem(
+              id: '0',
+              title: 'NASA\'s view on Space',
+              artist: 'NASA COM',
+              artUri: Uri.parse(
+                'https://images.unsplash.com/photo-1723375386110-729a0612ab99',
+              ),
+            ),
           ),
-        ),
-      ),
-    ));
+        ]),
+      )
+      ..setLoopMode(LoopMode.all),
+  );
 
   getIt.registerLazySingleton<PlaybackLocalDataSource>(
       () => PlaybackLocalDataSourceImpl());
