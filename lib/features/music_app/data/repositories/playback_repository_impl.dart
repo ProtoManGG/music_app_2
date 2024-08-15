@@ -22,13 +22,10 @@ class PlaybackRepositoryImpl implements PlaybackRepository {
     try {
       final result = await localDataSource.loadFromDb();
       if (result != null) {
-        print("GOT DATA $result");
         return right(result);
       }
-      print("NO DATA");
       return left(const CacheFailure(message: "No Data Stored"));
     } catch (e) {
-      print("ERROR");
       return left(CacheFailure(message: e.toString()));
     }
   }
