@@ -13,71 +13,84 @@ class AudioPlayerUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PlaybackPositionBloc, PlaybackPositionState>(
-      builder: (context, state) {
-        return Container(
-          padding: const EdgeInsets.all(20),
-          height: double.infinity,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xff144771),
-                Color(0xff071a2c),
-              ],
-            ),
+    return Container(
+      padding: const EdgeInsets.all(20),
+      height: double.infinity,
+      width: double.infinity,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xff144771),
+            Color(0xff071a2c),
+          ],
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          StreamBuilder<SequenceState?>(
+            stream: context.read<PlaybackPositionBloc>().sequenceStateStream,
+            builder: (context, snapshot) {
+              final state = snapshot.data;
+              if (state?.sequence.isEmpty ?? true) {
+                return const SizedBox();
+              }
+              final metadata = state!.currentSource!.tag as MediaItem;
+              return MediaMetadata(
+                imageUrl: metadata.artUri.toString(),
+                artist: metadata.artist ?? '',
+                title: metadata.title,
+              );
+            },
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              StreamBuilder<SequenceState?>(
-                stream:
-                    context.read<PlaybackPositionBloc>().sequenceStateStream,
-                builder: (context, snapshot) {
-                  final state = snapshot.data;
-                  if (state?.sequence.isEmpty ?? true) {
-                    return const SizedBox();
-                  }
-                  final metadata = state!.currentSource!.tag as MediaItem;
-                  return MediaMetadata(
-                    imageUrl: metadata.artUri.toString(),
-                    artist: metadata.artist ?? '',
-                    title: metadata.title,
-                  );
-                },
-              ),
-              const SizedBox(height: 20),
-              StreamBuilder<PositionData>(
-                stream: context.read<PlaybackPositionBloc>().positionDataStream,
-                builder: (context, snapshot) {
-                  final positionData = snapshot.data;
-                  return ProgressBar(
-                      barHeight: 8,
-                      baseBarColor: Colors.grey[600],
-                      bufferedBarColor: Colors.grey,
-                      progressBarColor: Colors.red,
-                      thumbColor: Colors.red,
-                      timeLabelTextStyle: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      progress: positionData?.position ?? Duration.zero,
-                      buffered: positionData?.bufferedPosition ?? Duration.zero,
-                      total: positionData?.duration ?? Duration.zero,
-                      onSeek: (val) {
-                        context
-                            .read<PlaybackPositionBloc>()
-                            .add(AudioPlaybackEvent.seek(duration: val));
-                      });
-                },
-              ),
-              const Controls(),
-            ],
+          const SizedBox(height: 20),
+          StreamBuilder(
+            stream: context.read<PlaybackPositionBloc>().playerStateStream,
+            builder: (context, snapshot) {
+              final playerState = snapshot.data;
+              if (playerState?.processingState != ProcessingState.loading) {
+                return StreamBuilder<PositionData>(
+                  stream:
+                      context.read<PlaybackPositionBloc>().positionDataStream,
+                  builder: (context, snapshot) {
+                    final positionData = snapshot.data;
+                    return ProgressBar(
+                        barHeight: 8,
+                        baseBarColor: Colors.grey[600],
+                        bufferedBarColor: Colors.grey,
+                        progressBarColor: Colors.red,
+                        thumbColor: Colors.red,
+                        timeLabelTextStyle: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        progress: positionData?.position ?? Duration.zero,
+                        buffered:
+                            positionData?.bufferedPosition ?? Duration.zero,
+                        total: positionData?.duration ?? Duration.zero,
+                        onSeek: (val) {
+                          context
+                              .read<PlaybackPositionBloc>()
+                              .add(AudioPlaybackEvent.seek(duration: val));
+                        });
+                  },
+                );
+              } else {
+                return const Text(
+                  'Retrieving playback position',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                );
+              }
+            },
           ),
-        );
-      },
+          const Controls(),
+        ],
+      ),
     );
   }
 }
