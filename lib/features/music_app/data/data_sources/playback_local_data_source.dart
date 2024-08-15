@@ -43,8 +43,6 @@ class PlaybackLocalDataSourceImpl implements PlaybackLocalDataSource {
 
     await for (var message in responsePort) {
       if (message == 'Initialized') {
-        // print(
-        //     'Main thread received message: Initialized'); // Log received message
         responsePort.close();
         _isolateReady.complete();
         break;
