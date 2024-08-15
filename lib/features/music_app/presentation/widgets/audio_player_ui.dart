@@ -15,7 +15,6 @@ class AudioPlayerUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PlaybackPositionBloc, PlaybackPositionState>(
       builder: (context, state) {
-        print(state);
         return Container(
           padding: const EdgeInsets.all(20),
           height: double.infinity,
