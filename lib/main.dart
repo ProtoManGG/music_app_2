@@ -6,13 +6,14 @@ import 'features/music_app/presentation/bloc/playback_position_bloc.dart';
 import 'features/music_app/presentation/views/audio_player_screen.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  setup();
   await JustAudioBackground.init(
-    androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
+    androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audioo',
     androidNotificationChannelName: 'Audio playback',
     androidNotificationOngoing: true,
+    androidStopForegroundOnPause: true,
   );
+  WidgetsFlutterBinding.ensureInitialized();
+  setup();
   runApp(
     MultiBlocProvider(
       providers: [
