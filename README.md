@@ -28,3 +28,8 @@ This Flutter app demonstrates an audio player for iOS, showcasing Clean Architec
 
 2. 🧵 **Background Playback**
    - Utilizes Flutter Isolates for storing/re-storing last played position
+
+## Video Demo
+
+https://github.com/user-attachments/assets/79e0e02b-6e05-4984-bc25-514cdf9cda24
+
