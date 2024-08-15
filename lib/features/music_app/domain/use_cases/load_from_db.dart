@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:music_app_2/core/error/failures.dart';
-import 'package:music_app_2/core/usecases/usecase.dart';
-import 'package:music_app_2/features/music_app/domain/repositories/playback_repository.dart';
+import '../../../../core/error/failures.dart';
+import '../../../../core/usecases/usecase.dart';
+import '../repositories/playback_repository.dart';
 
 import '../entities/playback_state.dart';
 

@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:music_app_2/core/error/failures.dart';
-import 'package:music_app_2/features/music_app/domain/entities/playback_state.dart';
-import 'package:music_app_2/features/music_app/domain/entities/position_data.dart';
-import 'package:music_app_2/features/music_app/domain/repositories/playback_repository.dart';
+import '../../../../core/error/failures.dart';
+import '../../domain/entities/playback_state.dart';
+import '../../domain/entities/position_data.dart';
+import '../../domain/repositories/playback_repository.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../data_sources/playback_local_data_source.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:music_app_2/features/music_app/presentation/bloc/playback_position_bloc.dart';
-import 'package:music_app_2/features/music_app/presentation/widgets/audio_player_ui.dart';
+import '../bloc/playback_position_bloc.dart';
+import '../widgets/audio_player_ui.dart';
 
 class AudioPlayerScreen extends StatefulWidget {
   const AudioPlayerScreen({super.key});

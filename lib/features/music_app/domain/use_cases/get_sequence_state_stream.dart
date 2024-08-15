@@ -1,5 +1,5 @@
 import 'package:just_audio/just_audio.dart';
-import 'package:music_app_2/features/music_app/domain/repositories/playback_repository.dart';
+import '../repositories/playback_repository.dart';
 
 class GetSequenceStateStream {
   final PlaybackRepository _playbackRepository;

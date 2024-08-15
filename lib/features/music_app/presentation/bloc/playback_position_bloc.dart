@@ -3,20 +3,20 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:music_app_2/core/usecases/usecase.dart';
-import 'package:music_app_2/features/music_app/domain/entities/playback_state.dart';
-import 'package:music_app_2/features/music_app/domain/entities/position_data.dart';
-import 'package:music_app_2/features/music_app/domain/use_cases/dispose_isolate.dart';
-import 'package:music_app_2/features/music_app/domain/use_cases/get_duration.dart';
-import 'package:music_app_2/features/music_app/domain/use_cases/get_player_state_stream.dart';
-import 'package:music_app_2/features/music_app/domain/use_cases/get_position_data_stream.dart';
-import 'package:music_app_2/features/music_app/domain/use_cases/get_sequence_state_stream.dart';
-import 'package:music_app_2/features/music_app/domain/use_cases/init_isolate.dart';
-import 'package:music_app_2/features/music_app/domain/use_cases/load_from_db.dart';
-import 'package:music_app_2/features/music_app/domain/use_cases/pause_audio.dart';
-import 'package:music_app_2/features/music_app/domain/use_cases/play_audio.dart';
-import 'package:music_app_2/features/music_app/domain/use_cases/save_to_db.dart';
-import 'package:music_app_2/features/music_app/domain/use_cases/seek_audio.dart';
+import '../../../../core/usecases/usecase.dart';
+import '../../domain/entities/playback_state.dart';
+import '../../domain/entities/position_data.dart';
+import '../../domain/use_cases/dispose_isolate.dart';
+import '../../domain/use_cases/get_duration.dart';
+import '../../domain/use_cases/get_player_state_stream.dart';
+import '../../domain/use_cases/get_position_data_stream.dart';
+import '../../domain/use_cases/get_sequence_state_stream.dart';
+import '../../domain/use_cases/init_isolate.dart';
+import '../../domain/use_cases/load_from_db.dart';
+import '../../domain/use_cases/pause_audio.dart';
+import '../../domain/use_cases/play_audio.dart';
+import '../../domain/use_cases/save_to_db.dart';
+import '../../domain/use_cases/seek_audio.dart';
 
 part 'playback_position_bloc.freezed.dart';
 part 'playback_position_event.dart';
@@ -156,7 +156,6 @@ class PlaybackPositionBloc
     final result = await _seekAudio(SeekAudioParams(duration: event.duration));
     result.fold(
       (l) => emit(PlaybackPositionState.error(message: l.message)),
-      // (r) => null,
       (r) => emit(PlaybackPositionState.seeked(playbackStateEntity: r)),
     );
   }

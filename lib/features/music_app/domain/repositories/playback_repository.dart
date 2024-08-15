@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:music_app_2/core/error/failures.dart';
-import 'package:music_app_2/features/music_app/domain/entities/position_data.dart';
+import '../../../../core/error/failures.dart';
+import '../entities/position_data.dart';
 
 import '../entities/playback_state.dart';
 

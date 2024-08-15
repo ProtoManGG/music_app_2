@@ -1,5 +1,5 @@
-import 'package:music_app_2/features/music_app/domain/entities/position_data.dart';
-import 'package:music_app_2/features/music_app/domain/repositories/playback_repository.dart';
+import '../entities/position_data.dart';
+import '../repositories/playback_repository.dart';
 
 class GetPositionDataStream {
   final PlaybackRepository _playbackRepository;

@@ -1,4 +1,4 @@
-import 'package:music_app_2/features/music_app/domain/repositories/playback_repository.dart';
+import '../repositories/playback_repository.dart';
 
 import '../entities/playback_state.dart';
 

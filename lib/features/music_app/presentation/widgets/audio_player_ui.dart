@@ -3,10 +3,10 @@ import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:music_app_2/features/music_app/domain/entities/position_data.dart';
-import 'package:music_app_2/features/music_app/presentation/bloc/playback_position_bloc.dart';
-import 'package:music_app_2/features/music_app/presentation/widgets/controls_widget.dart';
-import 'package:music_app_2/features/music_app/presentation/widgets/media_metadata_widget.dart';
+import '../../domain/entities/position_data.dart';
+import '../bloc/playback_position_bloc.dart';
+import 'controls_widget.dart';
+import 'media_metadata_widget.dart';
 
 class AudioPlayerUI extends StatelessWidget {
   const AudioPlayerUI({super.key});

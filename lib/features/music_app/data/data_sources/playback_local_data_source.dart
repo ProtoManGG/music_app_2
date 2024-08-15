@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
 
-import 'package:music_app_2/core/utils/isolate_helper.dart';
+import '../../../../core/utils/isolate_helper.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../models/playback_state_model.dart';
