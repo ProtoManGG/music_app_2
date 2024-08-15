@@ -91,20 +91,20 @@ class PlaybackRepositoryImpl implements PlaybackRepository {
   }
 
   @override
-  Future<Either<Failure, PlaybackStateEntity>> seekAudio(Duration duration) async {
+  Future<Either<Failure, PlaybackStateEntity>> seekAudio(
+      Duration duration) async {
     try {
       // Wait until the player is not in processing state
       await for (final state in audioPlayer.playerStateStream) {
-        if (state.processingState != ProcessingState.buffering && 
+        if (state.processingState != ProcessingState.buffering &&
             state.processingState != ProcessingState.ready) {
           continue; // Wait for the player to be ready
         }
         break; // Player is ready, exit the loop
       }
 
-      print("GOT DURATION: $duration");
       await audioPlayer.seek(duration);
-      print("AFTER SEEK POSITION: ${audioPlayer.position}");
+
       return right(
         PlaybackStateEntity(
           currentTrackId: '0',
